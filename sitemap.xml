@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.bkvisualproduction.hr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bkvisualproduction.hr/en/" />
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.bkvisualproduction.hr/hr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bkvisualproduction.hr/en/" />
+  </url>
+  <url>
+    <loc>https://www.bkvisualproduction.hr/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bkvisualproduction.hr/en/" />
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.bkvisualproduction.hr/hr/" />
+  </url>
+  <url>
+    <loc>https://www.bkvisualproduction.hr/hr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bkvisualproduction.hr/en/" />
+    <xhtml:link rel="alternate" hreflang="hr" href="https://www.bkvisualproduction.hr/hr/" />
+  </url>
+
+  <!-- Legal -->
+  <url><loc>https://www.bkvisualproduction.hr/en/privacy.html</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/privacy.html</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/en/cookies.html</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/cookies.html</loc></url>
+
+  <!-- Portfolio categories -->
+  
+  <url><loc>https://www.bkvisualproduction.hr/en/portfolio/accommodation/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/galerija/smjestaj/</loc></url>
+
+  <url><loc>https://www.bkvisualproduction.hr/en/portfolio/restaurants/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/galerija/restorani/</loc></url>
+
+  <url><loc>https://www.bkvisualproduction.hr/en/portfolio/travel-agency/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/galerija/putne-agencije/</loc></url>
+  
+  <url><loc>https://www.bkvisualproduction.hr/en/portfolio/events/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/galerija/dogadaji/</loc></url>
+
+  <url><loc>https://www.bkvisualproduction.hr/en/portfolio/weddings/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/galerija/vjencanja/</loc></url>
+
+  <url><loc>https://www.bkvisualproduction.hr/en/portfolio/company-promo-material/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/galerija/promo-materijal-za-firme/</loc></url>
+
+  <!-- Projects -->
+  <url><loc>https://www.bkvisualproduction.hr/en/projects/longines/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/projekti/longines/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/en/projects/100-km-of-zadar/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/projekti/100-km-zadra/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/en/projects/toto-travel/</loc></url>
+  <url><loc>https://www.bkvisualproduction.hr/hr/projekti/toto-travel/</loc></url>
+</urlset>

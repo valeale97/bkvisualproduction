@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pravila o kolačićima | BK Visual Production</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <meta name="description" content="Pravila o kolačićima za BK Visual Production." />
+  <link rel="canonical" href="https://www.bkvisualproduction.hr/hr/cookies.html" />
+  <link rel="alternate" hreflang="en" href="https://www.bkvisualproduction.hr/en/cookies.html" />
+  <link rel="alternate" hreflang="hr" href="https://www.bkvisualproduction.hr/hr/cookies.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.bkvisualproduction.hr/en/cookies.html" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="page">
+  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
+
+  <header class="site-header site-header--fixed">
+    <nav class="nav nav--fixed" aria-label="Primarna navigacija">
+      <div class="container nav__inner">
+        <a class="brand" href="/hr/" aria-label="BK Visual Production početna">
+          <img class="brand__logo" src="/assets/img/logo.svg" alt="BK Visual Production" />
+        </a>
+
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="nav__toggle__bars" aria-hidden="true"></span>
+          <span class="sr-only">Meni</span>
+        </button>
+
+        <ul id="nav-links" class="nav__links">
+          <li><a class="nav__link" href="/hr/#about">O meni</a></li>
+          <li><a class="nav__link" href="/hr/#portfolio">Galerija</a></li>
+          <li><a class="nav__link" href="/hr/#projects">Istaknuto</a></li>
+          <li><a class="nav__link" href="/hr/#contact">Kontakt</a></li>
+        </ul>
+
+        <div class="lang" aria-label="Prebaci jezik">
+          <a class="lang__link" href="/en/cookies.html" lang="en">EN</a>
+          <span class="lang__sep" aria-hidden="true">/</span>
+          <a class="lang__link" href="/hr/cookies.html" lang="hr" aria-current="page">HR</a>
+        </div>
+        <button class="themeToggle" type="button" aria-pressed="false">
+          <span class="themeToggle__track" aria-hidden="true"><span class="themeToggle__thumb"></span></span>
+          <span class="sr-only">Promijeni temu</span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="container prose">
+    <h1>Pravila o kolačićima</h1>
+    <p>Ova stranica je statična i ne koristi kolačiće za praćenje. Lokalna pohrana se koristi samo za pamćenje vašeg izbora o banneru za kolačiće.</p>
+
+    <h2>Što su kolačići</h2>
+    <p>Kolačići su male tekstualne datoteke pohranjene na vašem uređaju. Pomažu web stranici da zapamti vaše postavke.</p>
+
+    <h2>Kolačići koje koristimo</h2>
+    <ul>
+      <li><strong>bkvp_cookie_consent</strong> – vrijednost <em>accepted</em> nakon što prihvatite banner.</li>
+      <li><strong>reCAPTCHA (Google)</strong> – uvijek omogućeno radi zaštite obrazaca od neželjene pošte. Google može postaviti kolačiće u tu svrhu.</li>
+      <li><strong>bkvp_prefs</strong> – opcionalno; pohranjuje vaše postavke tako da banner više ne bude prikazan.</li>
+    </ul>
+
+    <h2>Upravljanje kolačićima</h2>
+    <p>Možete izbrisati lokalnu pohranu za ovu domenu u postavkama preglednika, i banner će se ponovno pojaviti. Neke funkcije, poput zaštite obrazaca, mogu ovisiti o kolačićima ili lokalnoj pohrani.</p>
+
+    <p><a class="link" href="/hr/privacy.html">Pročitajte našu Politiku privatnosti</a>.</p>
+    <p><a class="btn btn--ghost" href="/hr/">Povratak na početnu stranicu</a></p>
+  </main>
+
+  <div data-include="contact"></div>
+
+  <!-- Postavke kolačića -->
+  <div class="cookie" id="cookie" role="dialog" aria-modal="true" aria-label="Postavke kolačića" hidden>
+    <div class="cookie__backdrop" data-cookie-close tabindex="-1"></div>
+    <div class="cookie__inner" role="document">
+      <h3 class="cookie__title">Kolačići</h3>
+      <p class="cookie__text">reCAPTCHA (Google) je uvijek omogućena radi zaštite obrazaca od neželjene pošte. Možete omogućiti ili onemogućiti kolačić koji pamti vaš izbor.</p>
+
+      <div class="cookie__actions">
+        <!-- <button class="btn btn--ghost btn--small" type="button" data-cookie-reject>Odbij</button> -->
+        <!-- <button class="btn btn--ghost btn--small" type="button" data-cookie-settings>Postavke</button> -->
+        <button class="btn btn--primary btn--small" type="button" data-cookie-accept>Prihvati</button>
+      </div>
+
+      <div class="cookie__panel" data-cookie-panel hidden>
+        <div class="cookie__row">
+          <label class="cookie__opt">
+            <input type="checkbox" checked disabled />
+            <span><strong>Zaštita od neželjene pošte</strong> <span class="muted">reCAPTCHA (Google) — uvijek omogućeno</span></span>
+          </label>
+          <p class="cookie__desc">Štiti obrasce od neželjene pošte. Može postaviti kolačiće treće strane.</p>
+        </div>
+
+        <div class="cookie__row">
+          <label class="cookie__opt">
+            <input type="checkbox" data-cookie-toggle="remember" checked />
+            <span><strong>Zapamti izbor</strong> <span class="muted">(opcionalno)</span></span>
+          </label>
+          <p class="cookie__desc">Pohranjuje vaš izbor kako banner više ne bi bio prikazan.</p>
+          <ul class="cookie__list"><li><code>bkvp_prefs</code> (vaše postavke)</li></ul>
+        </div>
+
+        <div class="cookie__panelActions">
+          <a class="btn btn--ghost btn--small" href="/hr/cookies.html">Detalji</a>
+          <button class="btn btn--primary btn--small" type="button" data-cookie-save>Spremi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/seo.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/forms.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?onload=BKVP_onRecaptchaLoad&render=explicit" async defer></script>
+  <div data-include="footer"></div>
+  <script src="/js/includes.js" defer></script>
+</body>
+</html>
