@@ -294,7 +294,7 @@ window.BKVP_DATA = {
   const projects = store.projects = store.projects || {};
 
   site.brand = 'BK Visual Production';
-  site.domain = 'https://www.bkvisualproduction.hr';
+  site.domain = 'https://www.bk-visualproduction.com';
 
   if (portfolio.accommodation) {
     portfolio.accommodation.key = 'accommodation';
@@ -410,16 +410,16 @@ window.BKVP_DATA = {
     projectOrder: ['longines', 'car-event', 'toto-travel'],
     ui: {
       en: {
-        portfolioAria: 'View portfolio: ',
-        portfolioOverlay: 'View gallery: ',
-        projectAria: 'Open project: ',
-        projectOverlay: 'Open project'
+        portfolioAria: 'Open',
+        portfolioOverlay: 'Open',
+        projectAria: 'Open',
+        projectOverlay: 'Open'
       },
       hr: {
-        portfolioAria: 'Pogledaj portfolio: ',
-        portfolioOverlay: 'Pogledaj galeriju: ',
-        projectAria: 'Otvori projekt: ',
-        projectOverlay: 'Otvori projekt'
+        portfolioAria: 'Otvori',
+        portfolioOverlay: 'Otvori ',
+        projectAria: 'Otvori',
+        projectOverlay: 'Otvori'
       }
     }
   };
@@ -452,17 +452,18 @@ window.BKVP_DATA = {
     if (!mount || !site.home) return;
 
     const ui = site.home.ui[lang] || site.home.ui.en;
+
     mount.innerHTML = site.home.portfolioOrder.map((key) => {
       const item = portfolio[key];
       if (!item) return '';
-      const title = pickLocalized(item.homeTitle || item.title, lang);
+
       const href = pickLocalized(item.path, lang, '#');
       const img = item.cover || (item.items && item.items[0] && (item.items[0].thumb || item.items[0].src)) || '/assets/img/logo.jpg';
+
       return `
-        <a class="tile" href="${esc(href)}" aria-label="${esc(ui.portfolioAria + title)}">
-          <img src="${esc(img)}" alt="${esc(title)}" loading="lazy" />
-          <span class="tile__label">${esc(title)}</span>
-          <span class="tile__overlay">${esc(ui.portfolioOverlay + title)}</span>
+        <a class="tile" href="${esc(href)}" aria-label="${esc(ui.portfolioAria)}">
+          <img src="${esc(img)}" alt="" loading="lazy" />
+          <span class="tile__overlay">${esc(ui.portfolioOverlay)}</span>
         </a>
       `;
     }).join('');

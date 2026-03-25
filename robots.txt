@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.bkvisualproduction.hr/sitemap.xml
+Sitemap: https://www.bk-visualproduction.com/sitemap.xml

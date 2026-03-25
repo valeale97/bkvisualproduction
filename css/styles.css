@@ -55,7 +55,6 @@ html[data-theme="light"]{
 }
 
 
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -119,9 +118,9 @@ a{color:inherit;text-decoration:none}
   max-height: 70px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .brand__logo {
-    max-height: 55px;
+    max-height: 50px
   }
 }
 
@@ -261,11 +260,10 @@ html[data-theme="light"] .hero__media > iframe{
   gap: 1.2rem;
   max-width: 100%;
 }
-/* .kicker{color:var(--muted);letter-spacing:.25em;text-transform:uppercase;font-size:.8rem} */
-/* .h1{font-size: clamp(2rem, 4vw, 3.35rem);line-height:1.08;margin:0} */
+
 
 .kicker{
-  font-size: clamp(0.85rem, 1.2vw, 1.3rem); /* smaller on mobile, grows on desktop */
+  font-size: clamp(0.75rem, 1.2vw, 1.3rem); /* smaller on mobile, grows on desktop */
   font-weight: 700;                       /* bold */
   letter-spacing: .18em;                  /* slightly tighter for readability */
   text-transform: uppercase;
@@ -665,26 +663,36 @@ input,select,textarea{
 .about,.latest{display:grid;gap:1rem}
 .about__row,.latest__row{display:grid;gap:1.2rem;align-items:flex-start}
 /* .about__row--reverse,.latest__row--reverse{ } */
-@media (min-width: 820px){
+@media (min-width: 666px){
 
   /* ABOUT */
   .about__row{grid-template-columns: 320px 1fr;}
   .about__row--reverse{grid-template-columns: 1fr 320px;}
   .about__row--reverse .about__media{order:2;}
+  .about__description {font-size: clamp(12px, 1.5vw, 14px);}
+  .bullets {font-size: clamp(12px, 1.5vw, 14px);}
 }
 
 
-@media (min-width: 768px){
+@media (min-width: 666px){
   /* LATEST */
   .latest__row{grid-template-columns: 320px 1fr;}
   .latest__row--reverse{grid-template-columns: 1fr 320px;}
   .latest__row--reverse .latest__media{order:2;}
+  .latest__descript {font-size: clamp(12px, 1.5vw, 14px);}
 
 }
+/* .about__description {
+  text-align: justify; 
+  line-height: 1.6;   
+  font-family: Arial, sans-serif; 
+} */
+
 .about__description {
-  text-align: justify; /* justifies the text */
-  line-height: 1.6;   /* optional: improves readability */
-  font-family: Arial, sans-serif; /* optional: choose a clean font */
+  text-align: justify;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+
 }
 /* .bullets {
   text-align: justify;
