@@ -242,11 +242,12 @@
         let json = {};
         try {
           json = text ? JSON.parse(text) : {};
-        } catch (_) {}
+        } catch (e) {}
 
         if (!res.ok || json.ok === false) {
           throw new Error(
             json.error ||
+            JSON.stringify(json) ||
             text ||
             `HTTP ${res.status}`
           );
