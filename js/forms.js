@@ -330,7 +330,6 @@
 
   
 
-  // ----- reCAPTCHA (v2 checkbox, explicit render) -----
   function getSiteKey(){
     const meta = document.querySelector('meta[name="recaptcha-site-key"]');
     const m = meta && meta.content ? meta.content.trim() : '';
@@ -364,6 +363,8 @@
       }
     });
   }
+
+  
 
   // Called by the Google reCAPTCHA script when loaded (see api.js?onload=...&render=explicit)
   window.BKVP_onRecaptchaLoad = function(){
