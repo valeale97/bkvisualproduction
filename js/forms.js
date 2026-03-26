@@ -413,9 +413,7 @@
     const lang = document.documentElement.lang || 'en';
     initOtherModal(lang);
     initContactForm(lang);
-    initBookingForm(lang);
 
-    // If reCAPTCHA is already loaded, render immediately.
     try{ renderRecaptcha(); }catch(e){}
   });
 })();
