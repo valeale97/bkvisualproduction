@@ -322,8 +322,17 @@
         setStatus(status,'success', lang==='hr' ? 'Poruka poslana! Javit ćemo se uskoro.' : 'Message sent! We’ll get back soon.');
         form.reset();
         if (window.grecaptcha) window.grecaptcha.reset();
-      }catch{
-        setStatus(status,'error', lang==='hr' ? 'Greška pri slanju. Pokušajte ponovno.' : 'Failed to send. Please try again.');
+      }catch(err){
+        console.error('Contact form error:', err);
+        setStatus(
+          status,
+          'error',
+          err && err.message
+            ? err.message
+            : (lang==='hr'
+                ? 'Greška pri slanju. Pokušajte ponovno.'
+                : 'Failed to send. Please try again.')
+        );
       }
     });
   }
