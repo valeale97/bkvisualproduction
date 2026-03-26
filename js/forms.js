@@ -18,7 +18,7 @@
   const CONFIG = window.BKVP_CONFIG = {
     // Google reCAPTCHA v2 (Checkbox) TEST key so the widget renders out-of-the-box.
     // Replace with your real site key when you create it in Google reCAPTCHA.
-    RECAPTCHA_SITE_KEY: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+    RECAPTCHA_SITE_KEY: '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b',
     APPS_SCRIPT_WEBAPP_URL: 'https://www.bk-visualproduction.com/api/contact',
     CALENDAR_ID: 'REPLACE_ME',
     WORKING_HOURS: { start: '09:00', end: '17:00' },
@@ -30,7 +30,7 @@
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
   function isConfigured(){
-    return CONFIG.APPS_SCRIPT_WEBAPP_URL && CONFIG.APPS_SCRIPT_WEBAPP_URL !== 'https://www.bk-visualproduction.com/api/contact';
+    return CONFIG.APPS_SCRIPT_WEBAPP_URL && CONFIG.APPS_SCRIPT_WEBAPP_URL !== 'REPLACE_ME';
   }
 
   function setStatus(el, type, msg){
