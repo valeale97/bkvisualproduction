@@ -174,7 +174,6 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/villa_5.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_6.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_7.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_8.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_9.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_10.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_11.jpg', alt: 'Accommodation photo' },

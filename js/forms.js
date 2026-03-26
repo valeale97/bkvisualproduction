@@ -335,16 +335,16 @@
     const meta = document.querySelector('meta[name="recaptcha-site-key"]');
     const m = meta && meta.content ? meta.content.trim() : '';
     // Ignore placeholders so CONFIG can still work.
-    if (m && m !== 'REPLACE_ME' && m !== 'RECAPTCHA_SITE_KEY') return m;
+    if (m && m !== '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b' && m !== 'RECAPTCHA_SITE_KEY') return m;
     const c = (typeof CONFIG !== 'undefined' && CONFIG && CONFIG.RECAPTCHA_SITE_KEY) ? String(CONFIG.RECAPTCHA_SITE_KEY).trim() : '';
-    if (c && c !== 'REPLACE_ME' && c !== 'RECAPTCHA_SITE_KEY') return c;
+    if (c && c !== '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b' && c !== 'RECAPTCHA_SITE_KEY') return c;
     return '';
   }
 
   function renderRecaptcha(){
     if (!window.grecaptcha) return;
     const sitekey = getSiteKey();
-    if (!sitekey || sitekey === 'REPLACE_ME' || sitekey === 'RECAPTCHA_SITE_KEY') return;
+    if (!sitekey || sitekey === '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b' || sitekey === 'RECAPTCHA_SITE_KEY') return;
 
     // Support legacy markup by normalizing to .js-recaptcha
     document.querySelectorAll('[data-recaptcha]:not(.js-recaptcha)').forEach((el)=>{
