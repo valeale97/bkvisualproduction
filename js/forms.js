@@ -315,21 +315,37 @@
       //   return;
       // }
 
-      const token = window.grecaptcha ? window.grecaptcha.getResponse(form.dataset.recaptchaId ? Number(form.dataset.recaptchaId) : undefined) : '';
-      if (!token){
-        setStatus(status,'error', lang==='hr' ? 'Potvrdite reCAPTCHA.' : 'Please complete reCAPTCHA.');
+      const token = window.grecaptcha
+        ? window.grecaptcha.getResponse(
+            form.dataset.recaptchaId ? Number(form.dataset.recaptchaId) : undefined
+          )
+        : '';
+
+      if (!token) {
+        setStatus(
+          status,
+          'error',
+          lang === 'hr' ? 'Potvrdite reCAPTCHA.' : 'Please complete reCAPTCHA.'
+        );
         return;
       }
 
-      try{
-        setStatus(status,'info', lang==='hr' ? 'Slanje...' : 'Sending...');
+      try {
+        setStatus(status, 'info', lang === 'hr' ? 'Slanje...' : 'Sending...');
+
         const res = await fetch(CONFIG.APPS_SCRIPT_WEBAPP_URL, {
-          method:'POST',
-          headers:{ 'Content-Type':'application/json' },
-          body: JSON.stringify({ action:'send', payload: data, recaptchaToken: token })
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'send',
+            payload: data,
+            recaptchaToken: token
+          })
         });
+
         const text = await res.text();
         let json = {};
+
         try {
           json = text ? JSON.parse(text) : {};
         } catch (e) {}
@@ -345,9 +361,13 @@
             `HTTP ${res.status}`
           );
         }
-        setStatus(status,'success', lang==='hr'
-          ? 'Poruka poslana! Javit ćemo se uskoro.'
-          : 'Message sent! We’ll get back soon.'
+
+        setStatus(
+          status,
+          'success',
+          lang === 'hr'
+            ? 'Poruka poslana! Javit ćemo se uskoro.'
+            : 'Message sent! We’ll get back soon.'
         );
 
         form.reset();
@@ -358,19 +378,23 @@
         setTimeout(() => {
           window.location.assign(lang === 'hr' ? '/hr/uspjeh/' : '/en/success/');
         }, 600);
+
+      } catch (err) {
         console.error('Contact form error:', err);
         setStatus(
           status,
           'error',
           err && err.message
             ? err.message
-            : (lang==='hr'
-                ? 'Greška pri slanju. Pokušajte ponovno.'
-                : 'Failed to send. Please try again.')
+            : (
+                lang === 'hr'
+                  ? 'Greška pri slanju. Pokušajte ponovno.'
+                  : 'Failed to send. Please try again.'
+              )
         );
       }
-    });
-  }
+      });
+      }
 
   
 
