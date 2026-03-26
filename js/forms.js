@@ -335,7 +335,15 @@
         } catch (e) {}
 
         if (!res.ok || json.ok === false) {
-          throw new Error(json.error || text || `HTTP ${res.status}`);
+          throw new Error(
+            json.resend_response?.message ||
+            json.resend_response?.error ||
+            json.details?.message ||
+            json.details ||
+            json.error ||
+            text ||
+            `HTTP ${res.status}`
+          );
         }
         setStatus(status,'success', lang==='hr' ? 'Poruka poslana! Javit ćemo se uskoro.' : 'Message sent! We’ll get back soon.');
         form.reset();
