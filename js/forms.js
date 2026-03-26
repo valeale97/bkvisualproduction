@@ -310,10 +310,10 @@
         return;
       }
       const inquiry = data.inquiry || data.topic || data.need || '';
-      if (inquiry === 'other' && !data.other_details){
-        setStatus(status,'error', lang==='hr' ? 'Opišite što trebate (Other).' : 'Please describe what you need (Other).');
-        return;
-      }
+      // if (inquiry === 'other' && !data.other_details){
+      //   setStatus(status,'error', lang==='hr' ? 'Opišite što trebate (Other).' : 'Please describe what you need (Other).');
+      //   return;
+      // }
 
       const token = window.grecaptcha ? window.grecaptcha.getResponse(form.dataset.recaptchaId ? Number(form.dataset.recaptchaId) : undefined) : '';
       if (!token){
