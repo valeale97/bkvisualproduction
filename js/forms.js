@@ -345,9 +345,20 @@
             `HTTP ${res.status}`
           );
         }
-        setStatus(status,'success', lang==='hr' ? 'Poruka poslana! Javit ćemo se uskoro.' : 'Message sent! We’ll get back soon.');
+        setStatus(status,'success', lang==='hr'
+          ? 'Poruka poslana! Javit ćemo se uskoro.'
+          : 'Message sent! We’ll get back soon.'
+        );
+
         form.reset();
+
         if (window.grecaptcha) window.grecaptcha.reset();
+
+        setTimeout(() => {
+          window.location.href = (lang === 'hr'
+            ? '/hr/uspjeh/'
+            : '/en/success/');
+        }, 600);
       }catch(err){
         console.error('Contact form error:', err);
         setStatus(
