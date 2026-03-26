@@ -446,6 +446,41 @@ window.BKVP_DATA = {
     return value || fallback;
   }
 
+  function formatCategoryName(key, lang) {
+    const labels = {
+      accommodation: {
+        en: 'Accommodation',
+        hr: 'Smještaj'
+      },
+      restaurant: {
+        en: 'Restaurant',
+        hr: 'Restorani'
+      },
+      travel_agency: {
+        en: 'Travel agency',
+        hr: 'Turističke agencije'
+      },
+      nightlife: {
+        en: 'Nightlife',
+        hr: 'Noćni život'
+      },
+      sport_event: {
+        en: 'Sport event',
+        hr: 'Sportski događaji'
+      },
+      wedding: {
+        en: 'Wedding',
+        hr: 'Vjenčanja'
+      },
+      company_promo: {
+        en: 'Company promo',
+        hr: 'Promotivni materijali'
+      }
+    };
+
+    return labels[key]?.[lang] || labels[key]?.en || key.replace(/_/g, ' ');
+  }
+
   function renderHomePortfolio(lang) {
     const mount = document.getElementById('js-home-portfolio');
     if (!mount || !site.home) return;
@@ -461,9 +496,14 @@ window.BKVP_DATA = {
 
       return `
         <a class="tile" href="${esc(href)}" aria-label="${esc(ui.portfolioAria)}">
-          <img src="${esc(img)}" alt="" loading="lazy" />
+          <img src="${esc(img)}" alt="${esc(key)}" loading="lazy" />
+
+          <span class="tile__label">
+            ${esc(formatCategoryName(key))}
+          </span>
+
           <span class="tile__overlay">
-            ${esc(item.title?.[lang] || item.title?.en || key)}
+            ${esc(ui.portfolioOverlay)}
           </span>
         </a>
       `;
