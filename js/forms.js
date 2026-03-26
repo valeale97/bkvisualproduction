@@ -354,12 +354,10 @@
 
         if (window.grecaptcha) window.grecaptcha.reset();
 
+        console.log('redirecting now...');
         setTimeout(() => {
-          window.location.href = (lang === 'hr'
-            ? '/hr/uspjeh/'
-            : '/en/success/');
+          window.location.assign(lang === 'hr' ? '/hr/uspjeh/' : '/en/success/');
         }, 600);
-      }catch(err){
         console.error('Contact form error:', err);
         setStatus(
           status,
