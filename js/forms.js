@@ -19,7 +19,7 @@
     // Google reCAPTCHA v2 (Checkbox) TEST key so the widget renders out-of-the-box.
     // Replace with your real site key when you create it in Google reCAPTCHA.
     RECAPTCHA_SITE_KEY: '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b',
-    APPS_SCRIPT_WEBAPP_URL: 'https://www.bk-visualproduction.com/api/contact*',
+    APPS_SCRIPT_WEBAPP_URL: 'https://recaptcha-bk.bornadji1108.workers.dev',
     CALENDAR_ID: 'REPLACE_ME',
     WORKING_HOURS: { start: '09:00', end: '17:00' },
     BREAKS: [ { start: '12:00', end: '13:00' } ],
@@ -324,9 +324,14 @@
           headers:{ 'Content-Type':'application/json' },
           body: JSON.stringify({ action:'send', payload: data, recaptchaToken: token })
         });
-        const json = await res.json().catch(()=>({}));
-        if (!res.ok || json.ok === false){
-          throw new Error(json.error || 'Request failed');
+        const text = await res.text();
+        let json = {};
+        try {
+          json = text ? JSON.parse(text) : {};
+        } catch (e) {}
+
+        if (!res.ok || json.ok === false) {
+          throw new Error(json.error || text || `HTTP ${res.status}`);
         }
         setStatus(status,'success', lang==='hr' ? 'Poruka poslana! Javit ćemo se uskoro.' : 'Message sent! We’ll get back soon.');
         form.reset();
