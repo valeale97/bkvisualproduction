@@ -351,7 +351,10 @@
   }
 
   function renderRecaptcha(){
-    if (!window.grecaptcha) return;
+    if (!window.grecaptcha || typeof window.grecaptcha.render !== 'function') {
+      console.error('grecaptcha.render is unavailable');
+      return;
+    }
 
     const sitekey = getSiteKey();
     if (!sitekey) return;
@@ -363,7 +366,7 @@
     document.querySelectorAll('.js-recaptcha').forEach((el)=>{
       if (el.dataset.rendered === 'true') return;
       try{
-        const id = grecaptcha.render(el, { sitekey });
+        const id = window.grecaptcha.render(el, { sitekey });
         el.dataset.rendered = 'true';
         const form = el.closest('form');
         if (form) form.dataset.recaptchaId = String(id);
