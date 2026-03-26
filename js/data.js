@@ -462,7 +462,9 @@ window.BKVP_DATA = {
       return `
         <a class="tile" href="${esc(href)}" aria-label="${esc(ui.portfolioAria)}">
           <img src="${esc(img)}" alt="" loading="lazy" />
-          <span class="tile__overlay">${esc(ui.portfolioOverlay)}</span>
+          <span class="tile__overlay">
+            ${esc(item.title?.[lang] || item.title?.en || key)}
+          </span>
         </a>
       `;
     }).join('');
