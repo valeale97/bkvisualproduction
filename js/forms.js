@@ -231,11 +231,10 @@
 
       try{
         setStatus(status,'info', lang==='hr' ? 'Slanje...' : 'Sending...');
-
         const res = await fetch(CONFIG.APPS_SCRIPT_WEBAPP_URL, {
-          method: 'POST',
-          headers: { 'Content-Type':'application/json' },
-          body: JSON.stringify({ action:'book', payload: data, recaptchaToken: token })
+          method:'POST',
+          headers:{ 'Content-Type':'application/json' },
+          body: JSON.stringify({ action:'send', payload: data, recaptchaToken: token })
         });
 
         const text = await res.text();
@@ -246,24 +245,28 @@
 
         if (!res.ok || json.ok === false) {
           throw new Error(
+            json.resend_response?.message ||
+            json.details?.message ||
+            json.details ||
             json.error ||
-            JSON.stringify(json) ||
             text ||
             `HTTP ${res.status}`
           );
         }
 
-        setStatus(status,'success', lang==='hr'
-          ? 'Rezervacija zaprimljena! Potvrdu šaljemo emailom.'
-          : 'Booking received! We’ll confirm by email.'
-        );
+        setStatus(status,'success', lang==='hr' ? 'Poruka poslana! Javit ćemo se uskoro.' : 'Message sent! We’ll get back soon.');
         form.reset();
         if (window.grecaptcha) window.grecaptcha.reset();
-        setTimeout(()=>{ window.location.href = (lang==='hr' ? '/hr/uspjeh/' : '/en/success/'); }, 600);
       }catch(err){
-        setStatus(status,'error', lang==='hr'
-          ? 'Došlo je do greške. Pokušajte ponovno ili nas kontaktirajte.'
-          : 'Something went wrong. Please try again or contact us.'
+        console.error('Contact form error:', err);
+        setStatus(
+          status,
+          'error',
+          err && err.message
+            ? err.message
+            : (lang==='hr'
+                ? 'Greška pri slanju. Pokušajte ponovno.'
+                : 'Failed to send. Please try again.')
         );
       }
     });
