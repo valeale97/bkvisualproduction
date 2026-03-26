@@ -30,7 +30,7 @@
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
   function isConfigured(){
-    return CONFIG.APPS_SCRIPT_WEBAPP_URL && CONFIG.APPS_SCRIPT_WEBAPP_URL !== 'REPLACE_ME';
+    return CONFIG.APPS_SCRIPT_WEBAPP_URL && CONFIG.APPS_SCRIPT_WEBAPP_URL !== 'https://www.bk-visualproduction.com/api/contact';
   }
 
   function setStatus(el, type, msg){
