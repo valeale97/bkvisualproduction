@@ -19,7 +19,7 @@
     // Google reCAPTCHA v2 (Checkbox) TEST key so the widget renders out-of-the-box.
     // Replace with your real site key when you create it in Google reCAPTCHA.
     RECAPTCHA_SITE_KEY: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-    APPS_SCRIPT_WEBAPP_URL: 'REPLACE_ME',
+    APPS_SCRIPT_WEBAPP_URL: 'https://www.bk-visualproduction.com/api/contact',
     CALENDAR_ID: 'REPLACE_ME',
     WORKING_HOURS: { start: '09:00', end: '17:00' },
     BREAKS: [ { start: '12:00', end: '13:00' } ],
