@@ -457,24 +457,24 @@ window.BKVP_DATA = {
         hr: 'Restorani'
       },
       travel_agency: {
-        en: 'Travel agency',
-        hr: 'Turističke agencije'
+        en: 'Travel Agency',
+        hr: 'Turističke Agencije'
       },
       nightlife: {
         en: 'Nightlife',
-        hr: 'Noćni život'
+        hr: 'Noćni Život'
       },
       sport_event: {
-        en: 'Sport event',
-        hr: 'Sportski događaji'
+        en: 'Sport Event',
+        hr: 'Sportski Događaji'
       },
       wedding: {
         en: 'Wedding',
         hr: 'Vjenčanja'
       },
       company_promo: {
-        en: 'Company promo',
-        hr: 'Promotivni materijali'
+        en: 'Company Promo',
+        hr: 'Promotivni Materijali'
       }
     };
 
@@ -492,14 +492,17 @@ window.BKVP_DATA = {
       if (!item) return '';
 
       const href = pickLocalized(item.path, lang, '#');
-      const img = item.cover || (item.items && item.items[0] && (item.items[0].thumb || item.items[0].src)) || '/assets/img/logo.jpg';
+      const img =
+        item.cover ||
+        (item.items && item.items[0] && (item.items[0].thumb || item.items[0].src)) ||
+        '/assets/img/logo.jpg';
 
       return `
         <a class="tile" href="${esc(href)}" aria-label="${esc(ui.portfolioAria)}">
-          <img src="${esc(img)}" alt="${esc(key)}" loading="lazy" />
+          <img src="${esc(img)}" alt="${esc(formatCategoryName(key, lang))}" loading="lazy" />
 
           <span class="tile__label">
-            ${esc(formatCategoryName(key))}
+            ${esc(formatCategoryName(key, lang))}
           </span>
 
           <span class="tile__overlay">
