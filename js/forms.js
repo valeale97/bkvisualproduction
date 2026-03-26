@@ -30,7 +30,8 @@
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
   function isConfigured(){
-    return CONFIG.APPS_SCRIPT_WEBAPP_URL && CONFIG.APPS_SCRIPT_WEBAPP_URL !== 'REPLACE_ME';
+    return CONFIG.APPS_SCRIPT_WEBAPP_URL &&
+          CONFIG.APPS_SCRIPT_WEBAPP_URL !== 'REPLACE_ME';
   }
 
   function setStatus(el, type, msg){
@@ -331,36 +332,35 @@
 
   // ----- reCAPTCHA (v2 checkbox, explicit render) -----
   function getSiteKey(){
-    // Prefer meta tag for easy per-env config.
     const meta = document.querySelector('meta[name="recaptcha-site-key"]');
     const m = meta && meta.content ? meta.content.trim() : '';
-    // Ignore placeholders so CONFIG can still work.
-    if (m && m !== '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b' && m !== 'RECAPTCHA_SITE_KEY') return m;
-    const c = (typeof CONFIG !== 'undefined' && CONFIG && CONFIG.RECAPTCHA_SITE_KEY) ? String(CONFIG.RECAPTCHA_SITE_KEY).trim() : '';
-    if (c && c !== '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b' && c !== 'RECAPTCHA_SITE_KEY') return c;
+    if (m && m !== 'RECAPTCHA_SITE_KEY' && m !== 'REPLACE_ME') return m;
+
+    const c = CONFIG && CONFIG.RECAPTCHA_SITE_KEY ? String(CONFIG.RECAPTCHA_SITE_KEY).trim() : '';
+    if (c && c !== 'RECAPTCHA_SITE_KEY' && c !== 'REPLACE_ME') return c;
+
     return '';
   }
 
   function renderRecaptcha(){
     if (!window.grecaptcha) return;
-    const sitekey = getSiteKey();
-    if (!sitekey || sitekey === '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b' || sitekey === 'RECAPTCHA_SITE_KEY') return;
 
-    // Support legacy markup by normalizing to .js-recaptcha
+    const sitekey = getSiteKey();
+    if (!sitekey) return;
+
     document.querySelectorAll('[data-recaptcha]:not(.js-recaptcha)').forEach((el)=>{
       el.classList.add('js-recaptcha');
     });
 
     document.querySelectorAll('.js-recaptcha').forEach((el)=>{
-      // Prevent double render
       if (el.dataset.rendered === 'true') return;
       try{
         const id = grecaptcha.render(el, { sitekey });
         el.dataset.rendered = 'true';
         const form = el.closest('form');
         if (form) form.dataset.recaptchaId = String(id);
-      }catch{
-        /* ignore */
+      }catch(e){
+        console.error('reCAPTCHA render failed:', e);
       }
     });
   }
