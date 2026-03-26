@@ -238,9 +238,18 @@
           body: JSON.stringify({ action:'book', payload: data, recaptchaToken: token })
         });
 
-        const json = await res.json().catch(()=>({}));
-        if (!res.ok || json.ok === false){
-          throw new Error(json.error || 'Request failed');
+        const text = await res.text();
+        let json = {};
+        try {
+          json = text ? JSON.parse(text) : {};
+        } catch (_) {}
+
+        if (!res.ok || json.ok === false) {
+          throw new Error(
+            json.error ||
+            text ||
+            `HTTP ${res.status}`
+          );
         }
 
         setStatus(status,'success', lang==='hr'
