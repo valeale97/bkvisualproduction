@@ -135,7 +135,7 @@
     };
 
     const src = pick(site.heroVideo);
-    const poster = site.heroPoster || '/assets/img/logo.jpg';
+    const poster = site.heroPoster || '';
     if (!src) return;
 
     // Clear any fallback markup

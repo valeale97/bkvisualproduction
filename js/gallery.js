@@ -52,7 +52,7 @@
       items = p.items.slice();
     } else {
       const derived = [];
-      const fallbackThumb = p.heroPoster || '/assets/img/logo.jpg';
+      const fallbackThumb = p.heroPoster || ''; 
 
       const normalizeVideoItem = (video) => {
         if (!video) return null;

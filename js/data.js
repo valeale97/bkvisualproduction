@@ -68,16 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 window.BKVP_DATA = {
   // Site-wide content (used on Home)
-  // You can set heroVideo to a local mp4 OR a Vimeo ID/url.
-  // Examples:
   //   heroVideo: { en: 'vimeo:123456789', hr: 'vimeo:123456789' }
   //   heroVideo: { en: '/assets/video/hero.mp4', hr: '/assets/video/hero.mp4' }
   site: {
-    heroVideo: {
-      en: 'vimeo:1165595420',
-      hr: 'vimeo:1165595420'
-    },
-    heroPoster: '/assets/img/logo.jpg'
+    // heroVideo: {
+    //   en: 'vimeo:1168610073',
+    //   hr: 'vimeo:1168610073'
+    heroVideo: { en: '/assets/video/100km_zadra_hero.mp4', hr: '/assets/video/100km_zadra_hero.mp4' },
+    heroPoster: ''
   },
   portfolio: {
     
@@ -173,13 +171,6 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/villa_4.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_5.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_6.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_7.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_9.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_10.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_11.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_12.jpg', alt: 'Accommodation photo' },
-        { type: 'image', src: '/assets/img/villa_13.jpg', alt: 'Accommodation photo' },
-        
         
       ]
     }
@@ -371,8 +362,8 @@ window.BKVP_DATA = {
     home: {
       title: { en: 'BK Visual Production', hr: 'BK Visual Production' },
       description: {
-        en: 'BK Visual Production creates modern, cinematic video and photography for weddings, sport, hospitality, restaurants, and travel.',
-        hr: 'BK Visual Production stvara moderne, kinematografske video i foto sadržaje za vjenčanja, sport, ugostiteljstvo, restorane i putovanja.'
+        en: "Cinematic photography and video production in Croatia for weddings, tourism, restaurants, sport, and brands. BK Visual Production creates modern storytelling visuals, drone footage, and promotional content.",
+        hr: "BK Visual Production stvara foto i video sadržaje za vjenčanja, turizam, restorane, sport i brendove. Specijalizirani smo za storytelling vizuale, promotivne materijale i snimke dronom."
       },
       ogTitle: { en: 'BK Visual Production | Videography & Photography', hr: 'BK Visual Production' },
       ogDescription: {
@@ -452,29 +443,25 @@ window.BKVP_DATA = {
         en: 'Accommodation',
         hr: 'Smještaj'
       },
-      restaurant: {
-        en: 'Restaurant',
+      restaurants: {
+        en: 'Restaurants',
         hr: 'Restorani'
       },
-      travel_agency: {
-        en: 'Travel Agency',
-        hr: 'Turističke Agencije'
+      travel: {
+        en: 'Travel agency',
+        hr: 'Turističke agencije'
       },
-      nightlife: {
-        en: 'Nightlife',
-        hr: 'Noćni Život'
+      events: {
+        en: 'Events',
+        hr: 'Događaji'
       },
-      sport_event: {
-        en: 'Sport Event',
-        hr: 'Sportski Događaji'
-      },
-      wedding: {
-        en: 'Wedding',
+      weddings: {
+        en: 'Weddings',
         hr: 'Vjenčanja'
       },
-      company_promo: {
-        en: 'Company Promo',
-        hr: 'Promotivni Materijali'
+      company: {
+        en: 'Company promo',
+        hr: 'Promo'
       }
     };
 
