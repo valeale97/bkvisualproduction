@@ -371,7 +371,7 @@ window.BKVP_DATA = {
         hr: 'Video i fotografija za brendove i posebne trenutke.'
       },
       path: { en: '/en/', hr: '/hr/' },
-      xDefault: '/en/'
+      xDefault: '/'
     },
     legal: {
       privacy: {
