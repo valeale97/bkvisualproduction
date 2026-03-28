@@ -273,47 +273,50 @@
   }
 
   async function initContactForm(lang){
-    const form = $('#contactForm');
-    if (!form) return;
-    const status = $('#contactStatus');
+    document.addEventListener('submit', async (e) => {
+      const form = e.target.closest('form[data-form="contact"]');
+      if (!form) return;
 
-    if (!isConfigured()){
-      setStatus(status, 'warn', lang === 'hr'
-        ? 'Slanje poruke zahtijeva konfiguraciju (Apps Script / reCAPTCHA).'
-        : 'Form submission requires configuration (Apps Script / reCAPTCHA).'
-      );
-    }
-
-    form.addEventListener('submit', async (e)=>{
       e.preventDefault();
+
+      const status = form.querySelector('#contactStatus, .form-status');
+      if (!status) return;
+
       clearStatus(status);
 
       if (!isConfigured()){
         setStatus(status,'warn', lang==='hr'
-          ? 'Slanje nije moguće dok se ne postavi Apps Script (pogledaj /server/apps-script/README.txt).'
-          : 'Submission is disabled until Apps Script is configured (see /server/apps-script/README.txt).'
+          ? 'Slanje nije moguće dok se ne postavi Apps Script.'
+          : 'Submission is disabled until Apps Script is configured.'
         );
         return;
       }
 
       const data = serialize(form);
+
       if (!data.name || !data.surname){
-        setStatus(status,'error', lang==='hr' ? 'Unesite ime i prezime.' : 'Please enter your name and surname.');
+        setStatus(status,'error', lang==='hr'
+          ? 'Unesite ime i prezime.'
+          : 'Please enter your name and surname.'
+        );
         return;
       }
+
       if (!validEmail(data.email)){
-        setStatus(status,'error', lang==='hr' ? 'Unesite ispravan email.' : 'Please enter a valid email.');
+        setStatus(status,'error', lang==='hr'
+          ? 'Unesite ispravan email.'
+          : 'Please enter a valid email.'
+        );
         return;
       }
+
       if (data.phone && !validPhone(data.phone)){
-        setStatus(status,'error', lang==='hr' ? 'Unesite ispravan broj telefona.' : 'Please enter a valid phone number.');
+        setStatus(status,'error', lang==='hr'
+          ? 'Unesite ispravan broj telefona.'
+          : 'Please enter a valid phone number.'
+        );
         return;
       }
-      const inquiry = data.inquiry || data.topic || data.need || '';
-      // if (inquiry === 'other' && !data.other_details){
-      //   setStatus(status,'error', lang==='hr' ? 'Opišite što trebate (Other).' : 'Please describe what you need (Other).');
-      //   return;
-      // }
 
       const token = window.grecaptcha
         ? window.grecaptcha.getResponse(
@@ -372,9 +375,11 @@
 
         form.reset();
 
-        if (window.grecaptcha) window.grecaptcha.reset();
+        if (window.grecaptcha) {
+          const widgetId = form.dataset.recaptchaId ? Number(form.dataset.recaptchaId) : undefined;
+          if (widgetId !== undefined) window.grecaptcha.reset(widgetId);
+        }
 
-        console.log('redirecting now...');
         setTimeout(() => {
           window.location.assign(lang === 'hr' ? '/hr/uspjeh/' : '/en/success/');
         }, 600);
@@ -393,8 +398,8 @@
               )
         );
       }
-      });
-      }
+    });
+  }
 
   
 
