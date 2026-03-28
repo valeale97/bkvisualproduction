@@ -346,7 +346,7 @@ window.BKVP_DATA = {
     projects['toto-travel'].title = { en: 'Toto Travel', hr: 'Toto Travel' };
     projects['toto-travel'].cover = '/assets/img/toto.jpeg';
     projects['toto-travel'].path = { en: '/en/projects/toto-travel/', hr: '/hr/projekti/toto-travel/' };
-    projects['toto-travel'].location = { en: 'Split-Dalmatia Country, Croatia', hr: 'Splitsko dalmatinska županija, Hrvatska' };
+    projects['toto-travel'].location = { en: 'Split-Dalmatia County, Croatia', hr: 'Splitsko dalmatinska županija, Hrvatska' };
     projects['toto-travel'].homeDescription = {
       en: 'Photo and video coverage for Toto Travel, a touristic agency in Split-Dalmatia County, Croatia, specializing in Adriatic boat tours. The material presents guided visits to scenic islands, coastal towns, and natural attractions, capturing the beauty of the Dalmatian coast, guest experiences, and the relaxed atmosphere of exploring the region by sea. Suitable for tourism, media, and promotional use.',
       hr: 'Foto i video pokrivanje za Toto Travel, turističku agenciju u Splitsko-dalmatinskoj županiji specijaliziranu za izlete brodom po Jadranu. Materijal prikazuje vođene posjete slikovitim otocima, obalnim gradovima i prirodnim atrakcijama, bilježeći ljepotu dalmatinske obale, iskustva gostiju i opuštenu atmosferu istraživanja regije morskim putem. Prikladno za turističku, medijsku i promotivnu upotrebu.'    };
