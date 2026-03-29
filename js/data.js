@@ -71,6 +71,26 @@ window.BKVP_DATA = {
   //   heroVideo: { en: 'vimeo:123456789', hr: 'vimeo:123456789' }
   //   heroVideo: { en: '/assets/video/hero.mp4', hr: '/assets/video/hero.mp4' }
   site: {
+    brand: 'BK Visual Production',
+    domain: 'https://www.bk-visualproduction.com',
+    assets: {
+      logo: '/assets/img/logo.png',
+      socialImage: '/assets/img/logo.png'
+    },
+    seo: {
+      home: {
+        path: { en: '/en/', hr: '/hr/' },
+        xDefault: '/hr/',
+        title: {
+          hr: 'BK Visual Production | Foto i video produkcija Zadar, Hrvatska i Europa',
+          en: 'BK Visual Production | Cinematic Video & Photography in Zadar, Croatia and Europe'
+        },
+        description: {
+          hr: 'BK Visual Production stvara moderne, kinematografske foto i video sadržaje za vjenčanja, sport, ugostiteljstvo, restorane i putovanja u Zadru, Hrvatskoj i diljem Europe.',
+          en: 'BK Visual Production creates modern cinematic photo and video content for weddings, sport, hospitality, restaurants, travel, and brands in Zadar, Croatia, and across Europe.'
+        }
+      }
+    },
     // heroVideo: {
     //   en: 'vimeo:1168610073',
     //   hr: 'vimeo:1168610073'

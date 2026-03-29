@@ -2,9 +2,8 @@
   forms.js
   Front-end-only form UX + validation.
 
-  Drop-in backend (Google Apps Script) support:
+  Drop-in backend support:
     - Email endpoint: /send
-    - Calendar endpoint: /availability and /book
 
   IMPORTANT:
   - If APPS_SCRIPT_WEBAPP_URL is not set, forms will show a config warning.
@@ -19,11 +18,7 @@
     // Google reCAPTCHA v2 (Checkbox) TEST key so the widget renders out-of-the-box.
     // Replace with your real site key when you create it in Google reCAPTCHA.
     RECAPTCHA_SITE_KEY: '6LeeVZksAAAAAB9_3coQ-CWUqmMDA7HEBYkSA46b',
-    APPS_SCRIPT_WEBAPP_URL: 'https://recaptcha-bk.bornadji1108.workers.dev',
-    CALENDAR_ID: 'REPLACE_ME',
-    WORKING_HOURS: { start: '09:00', end: '17:00' },
-    BREAKS: [ { start: '12:00', end: '13:00' } ],
-    SLOT_MINUTES: 30
+    APPS_SCRIPT_WEBAPP_URL: 'https://recaptcha-bk.bornadji1108.workers.dev'
   };
 
   const $ = (sel, root=document) => root.querySelector(sel);
@@ -100,176 +95,6 @@
       otherInput.required = select.value === 'other';
     });
     observer.observe(modal, { attributes: true, attributeFilter: ['hidden'] });
-  }
-
-  // ----- Booking time rules -----
-  function timeToMinutes(t){
-    const [h,m] = t.split(':').map(Number);
-    return h*60+m;
-  }
-
-  function inRange(min, start, end){
-    return min >= start && min < end;
-  }
-
-  function isInBreak(minutes){
-    return CONFIG.BREAKS.some(b=>inRange(minutes, timeToMinutes(b.start), timeToMinutes(b.end)));
-  }
-
-  function generateTimeOptions(){
-    const start = timeToMinutes(CONFIG.WORKING_HOURS.start);
-    const end = timeToMinutes(CONFIG.WORKING_HOURS.end);
-    const options = [];
-    for (let m = start; m <= end - CONFIG.SLOT_MINUTES; m += CONFIG.SLOT_MINUTES){
-      if (isInBreak(m)) continue;
-      const hh = String(Math.floor(m/60)).padStart(2,'0');
-      const mm = String(m%60).padStart(2,'0');
-      options.push(`${hh}:${mm}`);
-    }
-    return options;
-  }
-
-  async function fetchTakenSlots(dateStr){
-    if (!isConfigured()) return [];
-    try{
-      const url = new URL(CONFIG.APPS_SCRIPT_WEBAPP_URL);
-      url.searchParams.set('action','availability');
-      url.searchParams.set('date', dateStr);
-      url.searchParams.set('calendarId', CONFIG.CALENDAR_ID);
-      const res = await fetch(url.toString(), { method:'GET' });
-      if (!res.ok) return [];
-      const json = await res.json();
-      return Array.isArray(json.taken) ? json.taken : [];
-    }catch{
-      return [];
-    }
-  }
-
-  async function initBookingForm(lang){
-    const form = $('#bookingForm');
-    if (!form) return;
-
-    const status = $('#bookingStatus');
-    const timeSelect = $('#termin_time');
-    const dateInput = $('#termin_date');
-
-    // Populate time options
-    if (timeSelect){
-      timeSelect.innerHTML = '';
-      for (const t of generateTimeOptions()){
-        const opt = document.createElement('option');
-        opt.value = t;
-        opt.textContent = t;
-        timeSelect.appendChild(opt);
-      }
-    }
-
-    async function refreshTaken(){
-      if (!dateInput || !timeSelect) return;
-      const dateStr = dateInput.value;
-      if (!dateStr) return;
-
-      const taken = await fetchTakenSlots(dateStr);
-      const takenSet = new Set(taken);
-
-      [...timeSelect.options].forEach(o=>{
-        o.disabled = takenSet.has(o.value);
-      });
-
-      // If current is disabled, pick the first enabled
-      if (timeSelect.value && takenSet.has(timeSelect.value)){
-        const first = [...timeSelect.options].find(o=>!o.disabled);
-        if (first) timeSelect.value = first.value;
-      }
-
-      // Show note if backend not configured
-      if (!isConfigured()){
-        setStatus(status, 'warn', lang === 'hr'
-          ? 'Slanje rezervacije zahtijeva konfiguraciju (Apps Script / reCAPTCHA).'
-          : 'Booking submission requires configuration (Apps Script / reCAPTCHA).'
-        );
-      } else {
-        clearStatus(status);
-      }
-    }
-
-    dateInput?.addEventListener('change', refreshTaken);
-    await refreshTaken();
-
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      clearStatus(status);
-
-      if (!isConfigured()){
-        setStatus(status, 'warn', lang === 'hr'
-          ? 'Slanje zahtjeva nije moguće dok se ne postavi Apps Script (pogledaj /server/apps-script/README.txt).'
-          : 'Submission is disabled until Apps Script is configured (see /server/apps-script/README.txt).'
-        );
-        return;
-      }
-
-      const data = serialize(form);
-      if (!validEmail(data.email)){
-        setStatus(status,'error', lang==='hr' ? 'Unesite ispravan email.' : 'Please enter a valid email.');
-        return;
-      }
-      if (data.phone && !validPhone(data.phone)){
-        setStatus(status,'error', lang==='hr' ? 'Unesite ispravan broj telefona.' : 'Please enter a valid phone number.');
-        return;
-      }
-      if (!data.termin_date || !data.termin_time){
-        setStatus(status,'error', lang==='hr' ? 'Odaberite datum i vrijeme.' : 'Choose a date and time.');
-        return;
-      }
-
-      // Basic reCAPTCHA token capture (v2 checkbox)
-      const token = window.grecaptcha ? window.grecaptcha.getResponse(form.dataset.recaptchaId ? Number(form.dataset.recaptchaId) : undefined) : '';
-      if (!token){
-        setStatus(status,'error', lang==='hr' ? 'Potvrdite reCAPTCHA.' : 'Please complete reCAPTCHA.');
-        return;
-      }
-
-      try{
-        setStatus(status,'info', lang==='hr' ? 'Slanje...' : 'Sending...');
-        const res = await fetch(CONFIG.APPS_SCRIPT_WEBAPP_URL, {
-          method:'POST',
-          headers:{ 'Content-Type':'application/json' },
-          body: JSON.stringify({ action:'send', payload: data, recaptchaToken: token })
-        });
-
-        const text = await res.text();
-        let json = {};
-        try {
-          json = text ? JSON.parse(text) : {};
-        } catch (e) {}
-
-        if (!res.ok || json.ok === false) {
-          throw new Error(
-            json.resend_response?.message ||
-            json.details?.message ||
-            json.details ||
-            json.error ||
-            text ||
-            `HTTP ${res.status}`
-          );
-        }
-
-        setStatus(status,'success', lang==='hr' ? 'Poruka poslana! Javit ćemo se uskoro.' : 'Message sent! We’ll get back soon.');
-        form.reset();
-        if (window.grecaptcha) window.grecaptcha.reset();
-      }catch(err){
-        console.error('Contact form error:', err);
-        setStatus(
-          status,
-          'error',
-          err && err.message
-            ? err.message
-            : (lang==='hr'
-                ? 'Greška pri slanju. Pokušajte ponovno.'
-                : 'Failed to send. Please try again.')
-        );
-      }
-    });
   }
 
   async function initContactForm(lang){
