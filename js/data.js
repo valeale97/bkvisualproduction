@@ -113,11 +113,9 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/wedding_7.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_8.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_9.jpg', alt: 'Wedding photo' },
-        { type: 'image', src: '/assets/img/wedding_10.jpg', alt: 'Wedding photo' },
-        { type: 'image', src: '/assets/img/wedding_11.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_12.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_13.jpg', alt: 'Wedding photo' },
-        { type: 'image', src: '/assets/img/wedding_14.jpg', alt: 'Wedding photo' },
+        
         
         
       ]
