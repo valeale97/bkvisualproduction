@@ -110,17 +110,22 @@ a{color:inherit;text-decoration:none}
   text-align: justify;
 }
 
-[data-theme="light"] .brand__logo {
-  filter: brightness(0.6) contrast(1.6);
-}
+
 
 .brand__logo {
   max-height: 70px;
+  opacity: 0.8;
+  border-radius: 12px;        /* softer edges */
+  border: 2px solid #fff;     /* white line on edge */
+  box-sizing: border-box;
 }
 
 @media (max-width: 860px) {
   .brand__logo {
-    max-height: 50px
+    max-height: 50px;
+    opacity: 0.8;
+    border-radius: 10px;
+    border: 2px solid #fff;
   }
 }
 

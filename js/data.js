@@ -86,8 +86,8 @@ window.BKVP_DATA = {
           en: 'BK Visual Production | Cinematic Video & Photography in Zadar, Croatia and Europe'
         },
         description: {
-          hr: 'BK Visual Production stvara moderne, kinematografske foto i video sadržaje za vjenčanja, sport, ugostiteljstvo, restorane i putovanja u Zadru, Hrvatskoj i diljem Europe.',
-          en: 'BK Visual Production creates modern cinematic photo and video content for weddings, sport, hospitality, restaurants, travel, and brands in Zadar, Croatia, and across Europe.'
+          hr: 'Sa sjedištem u Zadru, BK Visual Production stvara moderne, kinematografske foto i video sadržaje za vjenčanja, sport, ugostiteljstvo, restorane i putovanja po Hrvatskoj i diljem Europe.',
+          en: 'Based in Zadar, Croatia - BK Visual Production creates modern cinematic photo and video content for weddings, sport, hospitality, restaurants, travel, and brands in Croatia, and across Europe.'
         }
       }
     },
@@ -115,8 +115,6 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/wedding_9.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_12.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_13.jpg', alt: 'Wedding photo' },
-        
-        
         
       ]
     },
@@ -342,8 +340,8 @@ window.BKVP_DATA = {
     projects.longines.path = { en: '/en/projects/longines/', hr: '/hr/projekti/longines/' };
     projects.longines.location = { en: 'European Union', hr: 'Europska unija' };
     projects.longines.homeDescription = {
-      en: 'Photo and video coverage of a professional show jumping competition. The material captures key action moments, the movement of horse and rider, and the atmosphere inside the arena. Coverage follows the course throughout the event, recording jumps, speed, precision, and visual details of the competition environment, resulting in sharp action imagery and dynamic sports footage suitable for media and promotional use.',      hr: 'Foto i video pokrivanje profesionalnog natjecanja u preponskom jahanju. Materijal dokumentira ključne akcijske trenutke, kretanje konja i jahača te atmosferu unutar arene. Pokrivanje prati tijek natjecanja kroz cijeli parkur, bilježeći skokove, brzinu, preciznost i vizualne detalje natjecateljskog okruženja, što rezultira oštrim akcijskim fotografijama i dinamičnim sportskim video sadržajem prikladnim za medijsku i promotivnu upotrebu.',
-      hr: 'Foto i video pokrivanje profesionalnog natjecanja u preponskom jahanju. Materijal bilježi ključne akcijske trenutke, kretanje konja i jahača te atmosferu unutar arene. Pokrivanje prati tijek natjecanja kroz parkur, bilježeći skokove, brzinu, preciznost i vizualne detalje okruženja, što rezultira oštrim akcijskim fotografijama i dinamičnim sportskim video sadržajem za medijsku i promotivnu upotrebu.'
+      en: 'Photo and video coverage of a professional show jumping competition. The material captures key action moments, the movement of horse and rider, and the atmosphere inside the arena. Coverage follows the course throughout the event, recording jumps, speed, precision, and visual details of the competition environment, resulting in sharp action imagery and dynamic sports footage suitable for media and promotional use.',
+      hr: 'Foto i video pokrivanje profesionalnog natjecanja u preponskom jahanju. Materijal dokumentira ključne akcijske trenutke, kretanje konja i jahača te atmosferu unutar arene. Pokrivanje prati tijek natjecanja kroz cijelu arenu, bilježeći skokove, brzinu, preciznost i vizualne detalje natjecateljskog okruženja, što rezultira oštrim akcijskim fotografijama i dinamičnim sportskim video sadržajem prikladnim za medijsku i promotivnu upotrebu.',
     };
   }
 
