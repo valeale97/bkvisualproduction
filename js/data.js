@@ -183,7 +183,7 @@ window.BKVP_DATA = {
         { type: 'video', src: 'vimeo:1168608726', thumb: '/assets/img/villa.jpg', alt: 'Accommodation video' },
         { type: 'video', src: 'vimeo:1181708473', thumb: '/assets/img/villaz6.jpg', alt: 'Accommodation video' },
         { type: 'video', src: 'vimeo:1172317554', thumb: '/assets/img/han.jpg', alt: 'Accommodation video' },
-        { type: 'video', src: 'vimeo:1181708473', thumb: '/assets/img/hanfpv.jpg', alt: 'Accommodation video' },
+        { type: 'video', src: 'vimeo:1181708497', thumb: '/assets/img/hanfpv.jpg', alt: 'Accommodation video' },
         { type: 'image', src: '/assets/img/villa_2.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_3.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_4.jpg', alt: 'Accommodation photo' },
