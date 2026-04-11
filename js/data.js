@@ -185,7 +185,7 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/food_32.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_33.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_34.jpg', alt: 'Restaurant photo' },
-        { type: 'image', src: '/assets/img/food_35.jpg', alt: 'Restaurant photo' },
+        { type: 'image', src: '/assets/img/food_35.jpg', alt: 'Restaurant photo', position: 'center 80%' },
         { type: 'image', src: '/assets/img/food_36.jpg', alt: 'Restaurant photo' },
       ]
     },
