@@ -168,7 +168,8 @@ grid.innerHTML = '';
 if (!grid.classList.contains('galleryGrid')) grid.classList.add('galleryGrid');
 
 const PAGE_SIZE = 6;
-const SCROLL_STEP_TO_LOAD = 60; // load next batch after user scrolls this much downward
+const SCROLL_STEP_TO_LOAD = 60;
+const BOTTOM_THRESHOLD = 120; // px from bottom before loading next batch
 
 let renderedCount = 0;
 let isBatchLoading = false;
@@ -279,6 +280,12 @@ function waitForBatchImages(images) {
   });
 }
 
+function isNearBottom() {
+  const scrollBottom = window.scrollY + window.innerHeight;
+  const pageHeight = document.documentElement.scrollHeight;
+  return pageHeight - scrollBottom <= BOTTOM_THRESHOLD;
+}
+
 async function renderNextBatch() {
   if (isBatchLoading) return;
   if (renderedCount >= items.length) return;
@@ -314,11 +321,16 @@ async function renderNextBatch() {
   hideLoader();
   isBatchLoading = false;
 
-  // reset scroll checkpoint after each successful load
   lastLoadScrollY = window.scrollY;
 
   if (renderedCount >= items.length) {
     window.removeEventListener('scroll', handleGalleryScroll);
+    return;
+  }
+
+  // user may already be at the bottom, so continue loading without waiting
+  if (isNearBottom()) {
+    renderNextBatch();
   }
 }
 
@@ -329,7 +341,10 @@ function handleGalleryScroll() {
   const currentY = window.scrollY;
   const scrolledDownSinceLastLoad = currentY - lastLoadScrollY;
 
-  if (scrolledDownSinceLastLoad >= SCROLL_STEP_TO_LOAD) {
+  if (
+    scrolledDownSinceLastLoad >= SCROLL_STEP_TO_LOAD ||
+    isNearBottom()
+  ) {
     renderNextBatch();
   }
 }
