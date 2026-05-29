@@ -82,6 +82,7 @@
 
       <ul id="nav-links" class="nav__links">
         <li><a class="nav__link" href="#about">O meni</a></li>
+        <li><a class="nav__link" href="#services-projects">Projekti</a></li>
         <li><a class="nav__link" href="#portfolio">Galerija</a></li>
         <li><a class="nav__link" href="#projects">Istaknuto</a></li>
         <li><a class="nav__link" href="#contact">Kontakt</a></li>
@@ -92,10 +93,6 @@
         <span class="lang__sep" aria-hidden="true">/</span>
         <a class="lang__link" href="/hr/" lang="hr" aria-current="page">HR</a>
       </div>
-      <button class="themeToggle" type="button" aria-pressed="false">
-        <span class="themeToggle__track" aria-hidden="true"><span class="themeToggle__thumb"></span></span>
-        <span class="sr-only">Toggle theme</span>
-      </button>
 
     </div>
   </nav>
@@ -163,7 +160,32 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="portfolio">
+    <section id="services-projects" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2>Projekti</h2>
+        </header>
+
+        <div class="latest" id="js-home-service-projects">
+          <article class="latest__row">
+            <div class="latest__media">
+              <a class="frameLink" href="/hr/projekti/fotografije-oka/" aria-label="Otvori projekt Fotografije oka">
+                <img src="/assets/img/eye1.jpeg" alt="Fotografije oka" loading="lazy" data-rotating-gallery="[{&quot;src&quot;: &quot;/assets/img/eye1.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye2.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye3.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye4.jpeg&quot;, &quot;position&quot;: &quot;center 20%&quot;}, {&quot;src&quot;: &quot;/assets/img/eye5.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye6.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye7.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye8.jpeg&quot;}]" />
+                <span class="frameLink__overlay">Otvori projekt</span>
+              </a>
+            </div>
+            <div class="latest__text">
+              <h3><a class="textLink" href="/hr/projekti/fotografije-oka/">Fotografije oka</a></h3>
+              <p class="latest__loc"><svg class="pin-icon pin-icon--maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-5 7-12a7 7 0 1 0-14 0c0 7 7 12 7 12z"/><path d="M12 13.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z" fill="currentColor"/></svg><span>Zadar, Hrvatska</span></p>
+              <p class="latest__descript">Posebno studijsko iskustvo fotografiranja šarenice i oka s rotirajućim primjerima iz galerije, digitalnom isporukom i opcijama tiska ili uokvirenih fotografija.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+<section class="section" id="portfolio">
       <div class="container">
         <header class="section__header">
           <h2>Galerija</h2>
@@ -173,7 +195,7 @@
       </div>
     </section>
 
-    <section class="section" id="projects">
+    <section class="section section--alt" id="projects">
       <div class="container">
         <header class="section__header">
           <h2>Istaknuto</h2>
@@ -185,7 +207,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="contact">
+    <section class="section" id="contact">
       <div class="container">
         <header class="section__header">
           <h2>Kontakt</h2>
@@ -271,7 +293,7 @@
     </p>
     <p class="footer__links">
       <a href="/hr/privacy.html">Pravila privatnosti</a>
-      <span aria-hidden="true">·</span>
+      <span aria-hidden="true">•</span>
       <a href="/hr/cookies.html">Kolačići</a>
       <span aria-hidden="true">•</span>
       <a href="#" data-cookie-open>Postavke kolačića</a>

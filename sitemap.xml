@@ -37,11 +37,13 @@
   <url><loc>https://www.bk-visualproduction.com/en/portfolio/company-promo-material/</loc></url>
   <url><loc>https://www.bk-visualproduction.com/hr/galerija/promo-materijal-za-firme/</loc></url>
 
-  <!-- Projects -->
-  <url><loc>https://www.bk-visualproduction.com/en/projects/longines/</loc></url>
-  <url><loc>https://www.bk-visualproduction.com/hr/projekti/longines/</loc></url>
-  <url><loc>https://www.bk-visualproduction.com/en/projects/100-km-of-zadar/</loc></url>
-  <url><loc>https://www.bk-visualproduction.com/hr/projekti/100-km-zadra/</loc></url>
-  <url><loc>https://www.bk-visualproduction.com/en/projects/toto-travel/</loc></url>
-  <url><loc>https://www.bk-visualproduction.com/hr/projekti/toto-travel/</loc></url>
+  <!-- Highlights -->
+  <url><loc>https://www.bk-visualproduction.com/en/highlights/longines/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/hr/istaknuto/longines/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/en/highlights/100-km-of-zadar/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/hr/istaknuto/100-km-zadra/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/en/highlights/toto-travel/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/hr/istaknuto/toto-travel/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/en/projects/eye-photography/</loc></url>
+  <url><loc>https://www.bk-visualproduction.com/hr/projekti/fotografije-oka/</loc></url>
 </urlset>

@@ -98,6 +98,7 @@
 
       <ul id="nav-links" class="nav__links">
         <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#services-projects">Projects</a></li>
         <li><a class="nav__link" href="#portfolio">Portfolio</a></li>
         <li><a class="nav__link" href="#projects">Highlights</a></li>
         <li><a class="nav__link" href="#contact">Contact</a></li>
@@ -108,10 +109,6 @@
         <span class="lang__sep" aria-hidden="true">/</span>
         <a class="lang__link" href="/hr/" lang="hr" >HR</a>
       </div>
-      <button class="themeToggle" type="button" aria-pressed="false">
-        <span class="themeToggle__track" aria-hidden="true"><span class="themeToggle__thumb"></span></span>
-        <span class="sr-only">Toggle theme</span>
-      </button>
 
     </div>
   </nav>
@@ -171,7 +168,33 @@
       </div>
     </section>
 
-    <section id="portfolio" class="section section--alt">
+    <section id="services-projects" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2>Projects</h2>
+
+        </header>
+
+        <div class="latest" id="js-home-service-projects">
+          <article class="latest__row">
+            <div class="latest__media">
+              <a class="frameLink" href="/en/projects/eye-photography/" aria-label="Open Eye Photography project">
+                <img src="/assets/img/eye1.jpeg" alt="Eye Photography" loading="lazy" data-rotating-gallery="[{&quot;src&quot;: &quot;/assets/img/eye1.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye2.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye3.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye4.jpeg&quot;, &quot;position&quot;: &quot;center 20%&quot;}, {&quot;src&quot;: &quot;/assets/img/eye5.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye6.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye7.jpeg&quot;}, {&quot;src&quot;: &quot;/assets/img/eye8.jpeg&quot;}]" />
+                <span class="frameLink__overlay">Open project</span>
+              </a>
+            </div>
+            <div class="latest__text">
+              <h3><a class="textLink" href="/en/projects/eye-photography/">Eye Photography</a></h3>
+              <p class="latest__loc"><svg class="pin-icon pin-icon--maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-5 7-12a7 7 0 1 0-14 0c0 7 7 12 7 12z"/><path d="M12 13.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z" fill="currentColor"/></svg><span>Zadar, Croatia</span></p>
+              <p class="latest__descript">A dedicated iris and eye photography studio experience with rotating examples from the gallery, digital delivery, and optional printed or framed artwork.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+<section id="portfolio" class="section">
       <div class="container">
         <header class="section__header">
           <h2>Portfolio</h2>
@@ -181,7 +204,7 @@
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section section--alt">
       <div class="container">
         <header class="section__header">
           <h2>Highlights</h2>
@@ -193,7 +216,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section section--alt">
+    <section id="contact" class="section">
       <div class="container">
         <header class="section__header">
           <h2>Contact</h2>

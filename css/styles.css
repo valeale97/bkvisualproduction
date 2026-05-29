@@ -30,21 +30,6 @@
   --menu-bg: rgba(10,13,20,.92); /* dark theme */
 }
 
-/* Light theme (modern inverse) */
-html[data-theme="light"]{
-  --bg:#f6f7fb;
-  --bg2:#ffffff;
-  --nav-bg: rgba(255,255,255,.74);
-  --panel:rgba(0,0,0,.04);
-  --panel2:rgba(0,0,0,.06);
-  --text:#0b1220;
-  --muted:#516074;
-  --line:rgba(0,0,0,.14);
-  --shadow: 0 18px 60px rgba(0,0,0,.16);
-  --menu-bg: rgba(233,236,241,.85); /* light theme */
-  --heroShadeTop: rgba(246,247,251,0);
-  --heroShadeMid: rgba(246,247,251,0);
-}
 
 /* .hero__media {
   background: url('/assets/img/hero-poster.jpg') center / cover no-repeat;
@@ -66,13 +51,6 @@ body{
   line-height:1.55;
 }
 
-html[data-theme="light"] body{
-  background:
-    radial-gradient(1100px 520px at 18% -10%, rgba(29,78,216,.12), transparent 60%),
-    radial-gradient(980px 640px at 72% -8%, rgba(147,51,234,.10), transparent 58%),
-    radial-gradient(900px 700px at 50% 120%, rgba(14,165,233,.08), transparent 60%),
-    linear-gradient(180deg, var(--bg2), var(--bg));
-}
 
 /* subtle grain / texture */
 body::before{
@@ -88,10 +66,6 @@ body::before{
   z-index:-1;
 }
 
-html[data-theme="light"] body::before{
-  mix-blend-mode: multiply;
-  opacity:.14;
-}
 img,video{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
@@ -161,11 +135,6 @@ a{color:inherit;text-decoration:none}
   filter: contrast(1) brightness(1) saturate(1);
 }
 
-/* Keep media punchy in light mode without darkening it */
-html[data-theme="light"] .hero__media > video,
-html[data-theme="light"] .hero__media > iframe{
-  filter: contrast(1.04) brightness(.95) saturate(1.02);
-}
 .hero::after{
   content:"";
   position:absolute; inset:0;
@@ -448,6 +417,9 @@ main .section:nth-of-type(even){
   box-shadow: var(--shadow);
   transition: transform .18s ease, box-shadow .22s ease, border-color .22s ease;
 }
+@media (min-width: 920px){
+  .tile{aspect-ratio: 4/3;}
+}
 .tile img{width:100%;height:100%;object-fit:cover;filter: brightness(1) contrast(1.05)}
 .tile::after{
   content:"";
@@ -726,12 +698,13 @@ input,select,textarea{
 .frameLink{position:relative;display:block;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .22s ease, border-color .22s ease}
 .frameLink img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
 .frameLink__overlay{
-  position:absolute;inset:0;
-  display:grid;place-items:center;
-  color:var(--text);
-  background: rgba(0,0,0,.35);
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  background:transparent;
   opacity:0;
-  transition: opacity .18s ease;
+  transition:opacity .18s ease;
   font-weight:700;
   color:#e9ecf1;
 }
@@ -940,10 +913,13 @@ body[data-lang="hr"] .thumb::after{content:"Otvori";}
   padding: .75rem .9rem;
 }
 .lbBtn{
-  width:44px;height:44px;border-radius: 14px;
+  width:52px;height:52px;border-radius: 16px;
   border:1px solid var(--line);
   background: rgba(0,0,0,.35);
   color:#fff;
+  font-size:1.6rem;
+  line-height:1;
+  cursor:pointer;
 }
 .lbBtn:hover{box-shadow: 0 0 22px rgba(106,230,255,.14)}
 .lbBtn:focus-visible{outline:2px solid var(--glow);outline-offset:2px}
@@ -1209,47 +1185,6 @@ body[data-lang="hr"] .thumb::after{content:"Otvori";}
 .nav--fixed{position:fixed;inset-inline:0;top:0;z-index:100}
 .nav--fixed::before{content:"";position:absolute;inset:0;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 
-/* Theme toggle (near language) */
-.themeToggle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid var(--line);
-  background: var(--panel);
-  border-radius: 999px;
-  padding: 6px;
-  cursor:pointer;
-  transition: transform .18s ease, background .18s ease, border-color .18s ease;
-}
-.themeToggle:hover{transform: translateY(-1px)}
-.themeToggle:active{transform: translateY(0)}
-.themeToggle__track{
-  width: 44px;
-  height: 24px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.06);
-  position:relative;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
-}
-html[data-theme="light"] .themeToggle__track{
-  background: rgba(0,0,0,.06);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-}
-.themeToggle__thumb{
-  position:absolute;
-  top:2px; left:2px;
-  width:20px; height:20px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.55));
-  box-shadow: 0 8px 18px rgba(0,0,0,.35);
-  transform: translateX(0);
-  transition: transform .2s ease;
-}
-html[data-theme="light"] .themeToggle__thumb{
-  background: linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.62));
-  box-shadow: 0 8px 18px rgba(0,0,0,.18);
-}
-html[data-theme="light"] .themeToggle__thumb{transform: translateX(20px)}
 
 .nav__inner{position:relative;display:flex;align-items:center;gap:1rem;padding:.85rem 0}
 .nav__links{margin:0 auto}
@@ -1371,4 +1306,1465 @@ main.wrap {
 /* text justify inside cookies.html */
 .prose {
   text-align: justify;
+}
+
+/* Home eye photography block */
+.section__header--compact{margin:0 0 1rem}
+.eyeSection{display:grid;gap:1.5rem}
+.eyeSection__actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}
+.eyeInfoGrid{display:grid;gap:.9rem;margin-top:1rem}
+@media (min-width: 700px){
+  .eyeInfoGrid{grid-template-columns:repeat(2, minmax(0, 1fr));}
+}
+.infoCard{
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.04);
+  padding:1rem;
+}
+.infoCard h4{margin:0 0 .35rem;font-size:1rem}
+.infoCard p{margin:0;color:var(--muted)}
+.mapCard{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+  box-shadow:var(--shadow);
+}
+.mapCard iframe{display:block;width:100%;height:360px;border:0}
+.eyeGallery .thumb--static{cursor:default}
+.eyeGallery .thumb--static:hover{transform:none}
+.eyeGallery .thumb--static img{aspect-ratio:1/1;object-fit:cover}
+.latest__media img[data-rotating-gallery]{transition:opacity .35s ease, transform .25s ease}
+
+
+.projectExtra{display:grid;gap:1.25rem;margin:0 0 1.5rem}
+.projectExtra__actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:.9rem 0 1rem}
+.projectHeroSplit{display:grid;gap:1.25rem;align-items:start}
+.projectHeroSplit__media,.projectHeroSplit__content{min-width:0}
+.projectHeroSplit__content{display:flex;flex-direction:column}
+.projectHeroTile{position:relative;aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);box-shadow:var(--shadow)}
+.projectHeroTile img{display:block;width:100%;height:100%;object-fit:cover}
+.projectHeroCopy{margin:0 0 1.1rem;width:100%;max-width:none}
+.projectExtra__actions--directions{margin-top:.8rem}
+.projectInfoGrid,.pricingGrid{display:grid;gap:.9rem}
+.projectInfoGrid{margin-top:.75rem}
+.projectInfoCard{padding:1.2rem 1.15rem 1.35rem}
+.projectInfoCard__row{display:grid;gap:1rem}
+.projectInfoCard__row > div{min-width:0}
+.projectInfoCard h4{margin:0 0 .35rem}
+.projectInfoPhone{margin:.55rem 0 0}
+.projectInfoPhone a{font-weight:600;text-decoration:none}
+.projectInfoPhone a:hover{text-decoration:underline}
+@media (min-width: 700px){
+  .projectInfoCard__row{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);}
+  .pricingGrid{grid-template-columns:repeat(2, minmax(0, 1fr));}
+}
+@media (min-width: 920px){
+  .projectHeroSplit{grid-template-columns:320px minmax(0, 1fr);gap:1rem;align-items:stretch;}
+  .projectHeroSplit__content{height:100%;}
+  .projectInfoGrid{margin-top:auto;}
+  .projectInfoCard{min-height:132px;}
+}
+.hoursList{margin:.1rem 0 0;padding-left:1.1rem;color:var(--muted)}
+.hoursList li + li{margin-top:.3rem}
+.pricingCard{position:relative;padding-top:3.15rem}
+.pricingCard h4{margin:0 0 .4rem}
+.pricingCard p{margin:0;color:var(--muted)}
+.pricingIntro{margin:.45rem 0 0;max-width:56ch}
+.priceTag{position:absolute;top:.95rem;right:.95rem;display:inline-flex;align-items:center;justify-content:center;padding:.42rem .72rem;border-radius:999px;background:rgba(136, 201, 155, .88);color:#fff;font-size:.95rem;font-weight:700;line-height:1;box-shadow:0 10px 24px rgba(35, 82, 48, .18)}
+.priceTag__currency{margin-left:.22rem;font-size:.9em;opacity:.98}
+.projectBookingFrame,.projectMap{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:rgba(255,255,255,.03);box-shadow:var(--shadow)}
+body[data-project="eye-photography"] .projectBookingFrame{width:100%;margin:0}
+body[data-project="eye-photography"] .projectMap{width:min(100%, 70%);margin:0 auto}
+.projectMap iframe{display:block;width:100%;height:360px;border:0}
+.projectMap--withFallback{position:relative;min-height:360px;background:#0b1220;}
+.projectMap--withFallback iframe,
+.projectMap--withFallback .projectMap__fallback{position:absolute;inset:0;width:100%;height:100%;}
+.projectMap--withFallback iframe{z-index:2;background:transparent;}
+.projectMap__fallback{z-index:1;display:block;object-fit:cover;}
+.projectMap__notice{position:absolute;left:.8rem;right:.8rem;bottom:.8rem;z-index:3;margin:0;padding:.55rem .75rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(5,8,12,.76);color:#d8e5ee;font-size:.86rem;text-align:center;backdrop-filter:blur(10px);opacity:0;transform:translateY(6px);transition:opacity .18s ease, transform .18s ease;pointer-events:none;}
+.projectMap--fallbackActive iframe{display:none;}
+.projectMap--fallbackActive .projectMap__notice{opacity:1;transform:translateY(0);}
+.projectMap--loaded .projectMap__notice{display:none;}
+
+.bookingCard{padding:0}
+.bookingCard__inner{display:grid;gap:1rem;padding:1.2rem}
+.bookingCard__kicker{margin:0 0 .35rem}
+.bookingCard h2{margin:0}
+.bookingCard__copy p{margin-bottom:0}
+.bookingCard__status{margin:.65rem 0 0;text-align:center;font-weight:700;padding:.72rem .9rem;border-radius:14px;border:1px solid transparent}
+.bookingCard__status.is-open{color:#d7f5e2;background:rgba(21,128,61,.2);border-color:rgba(34,197,94,.34)}
+.bookingCard__status.is-closed{color:#ffe1e1;background:rgba(153,27,27,.22);border-color:rgba(248,113,113,.34)}
+.bookingCountChip[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.bookingCountPicker{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
+.bookingCountChip{min-width:52px;padding:.75rem .95rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-weight:700;cursor:pointer;transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease}
+.bookingCountChip:hover,.bookingCountChip:focus-visible{border-color:rgba(106,230,255,.35);box-shadow:0 0 0 1px rgba(106,230,255,.14), 0 0 18px rgba(106,230,255,.16);transform:translateY(-1px)}
+.bookingCountChip.is-selected{background:rgba(106,230,255,.14);border-color:rgba(106,230,255,.4);box-shadow:0 0 0 1px rgba(106,230,255,.18), 0 0 20px rgba(106,230,255,.14)}
+.bookingCard__note,.bookingCard__selected{margin:0;text-align:center;color:var(--muted)}
+.bookingCard__selected{min-height:1.4rem;color:var(--text);font-weight:600}
+.bookingCard__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;padding-top:.25rem}
+.bookingCard__actions .btn{min-width:160px;justify-content:center}
+.bookingCard__actions .btn[disabled]{opacity:.55;cursor:not-allowed;pointer-events:none}
+@media (max-width: 919px){
+  body[data-project="eye-photography"] .projectBookingFrame,
+  body[data-project="eye-photography"] .projectMap{width:100%;}
+}
+@media (max-width: 640px){
+  body[data-project="eye-photography"] .projectMap{aspect-ratio:1 / 1;}
+  body[data-project="eye-photography"] .projectMap iframe{height:100%;}
+  body[data-project="eye-photography"] .bookingCountPicker{flex-wrap:nowrap;gap:.4rem;justify-content:center}
+  body[data-project="eye-photography"] .bookingCountChip{flex:0 0 42px;width:42px;min-width:42px;height:42px;padding:0;font-size:.95rem}
+}
+
+/* Eye Photography standalone landing page */
+body[data-project="eye-photography"]{scroll-behavior:smooth}
+body[data-project="eye-photography"] .nav__links{gap:.28rem}
+body[data-project="eye-photography"] .nav__links a{font-size:.92rem;padding:.5rem .62rem}
+.eyeHero{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line);background:#05070d}
+.eyeHero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.86}
+/* .eyeHero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,5,10,.28),rgba(3,5,10,.52))} */
+.eyeHero__shade{position:absolute;inset:0;background:transparent}
+.eyeHero__content{position:relative;z-index:1;text-align:center;max-width:760px;padding:7rem 1rem 4rem;margin:auto}
+.eyeHero__content h1{font-size:clamp(2.5rem,7vw,5.7rem);line-height:.96;margin:.2rem 0 .75rem}
+.eyeHero__content p{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.82);margin:0 auto 1.3rem;max-width:58ch}
+.eyeHero__actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.eyeLanding{display:grid;gap:1.2rem}
+.eyeRow{display:grid;gap:1.2rem;align-items:center}
+.eyeRow__media img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow)}
+/* .eyeRow__text h3{margin:0 0 .45rem}.eyeRow__text p{margin:.35rem 0;color:var(--muted);line-height:1.68}.eyeRow__text ul{margin:.65rem 0 0;padding-left:1.15rem;color:var(--muted)}.eyeRow__text li+li{margin-top:.3rem} */
+.eyeRow__text h3 {
+  margin: 0 0 .45rem;
+}
+
+.eyeRow__text p {
+  margin: .35rem 0;
+  color: var(--muted);
+  line-height: 1.68;
+  font-size: clamp(12px, 1.5vw, 14px);
+}
+
+.eyeRow__text ul {
+  margin: .65rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  font-size: clamp(12px, 1.5vw, 14px);
+}
+
+.eyeRow__text li + li {
+  margin-top: .3rem;
+}
+/* .eyePrice{display:inline-flex;align-items:center;gap:.35rem;margin:.55rem 0 .25rem;padding:.42rem .72rem;border-radius:999px;background:rgba(136,201,155,.88);color:#fff;font-weight:800;box-shadow:0 10px 24px rgba(35,82,48,.18)} */
+.eyePrice{display:inline-flex;align-items:center;gap:.35rem;margin:.55rem 0 .25rem;padding:.42rem .72rem;border-radius:999px;background:rgba(136,201,155,.88);color:#fff;font-weight:800;box-shadow:0 10px 24px rgba(35,82,48,.18);font-size:clamp(12px,1.6vw,15px)}
+.eyeMapGrid{display:grid;gap:1.2rem;align-items:stretch}.eyeMapGrid .projectMap{width:100%!important;margin:0}.eyeMapPanel{padding:1.25rem}.eyeMapPanel h3{margin:0 0 .5rem}.eyeMapPanel .hoursList{margin:.7rem 0 1rem}.eyeMapPanel .btn{width:max-content}
+.eyeFaq{display:grid;gap:.75rem}.eyeFaq details{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03);box-shadow:var(--shadow)}.eyeFaq summary{cursor:pointer;font-weight:800}.eyeFaq p{margin:.65rem 0 0;color:var(--muted);line-height:1.65}
+body[data-project="eye-photography"] .bookingCard__status{display:inline-flex;width:auto;justify-self:center;align-items:center;justify-content:center;padding:.45rem .7rem;font-size:.9rem}body[data-project="eye-photography"] .bookingCard__actions .btn{min-width:0;width:auto;padding-left:1rem;padding-right:1rem}
+@media (min-width:666px){.eyeRow{grid-template-columns:320px minmax(0,1fr)}.eyeRow--reverse{grid-template-columns:minmax(0,1fr) 320px}.eyeRow--reverse .eyeRow__media{order:2}}
+@media (min-width:920px){.eyeMapGrid{grid-template-columns:7fr 3fr}.eyeHero{min-height:86vh}}
+@media (max-width:860px){body[data-project="eye-photography"] .nav__links a{font-size:1rem;padding:.7rem .75rem}}
+
+@media (min-width:920px){
+  body[data-project="eye-photography"] .eyeRow__text p,
+  body[data-project="eye-photography"] .eyeRow__text ul,
+  body[data-project="eye-photography"] .eyeRow__text li,
+  body[data-project="eye-photography"] .eyeFaq p,
+  body[data-project="eye-photography"] .eyeGalleryIntro,
+  body[data-project="eye-photography"] .section__header p,
+  body[data-project="eye-photography"] .eyeMapPanel,
+  body[data-project="eye-photography"] .bookingCard__copy p,
+  body[data-project="eye-photography"] .bookingCard__note,
+  body[data-project="eye-photography"] .bookingCard__status,
+  body[data-project="eye-photography"] .hoursList--split,
+  body[data-project="eye-photography"] .field,
+  body[data-project="eye-photography"] .fineprint,
+  body[data-project="eye-photography"] .form-status{
+    font-size:1rem;
+  }
+  body[data-project="eye-photography"] .eyePrice{
+    font-size:1rem;
+  }
+}
+
+
+
+/* Eye photography theme tuning: lighter dark surface, clearer section transitions,
+   blue tile edges, brighter imagery, and cleaner media presentation */
+body[data-project="eye-photography"]{
+  background:
+    radial-gradient(1200px 680px at 12% -6%, rgba(86, 163, 255, .22), transparent 58%),
+    radial-gradient(1040px 640px at 88% -12%, rgba(120, 118, 255, .16), transparent 55%),
+    radial-gradient(920px 760px at 50% 110%, rgba(56, 189, 248, .10), transparent 62%),
+    linear-gradient(180deg, #121826 0%, #0d1420 48%, #0a1119 100%);
+}
+body[data-project="eye-photography"] .section{
+  background: rgba(255,255,255,.024);
+  border-bottom-color: rgba(255,255,255,.10);
+}
+body[data-project="eye-photography"] main .section:nth-of-type(even){
+  background:
+    radial-gradient(900px 520px at 14% 12%, rgba(82, 162, 255, .12), transparent 58%),
+    radial-gradient(880px 500px at 86% 10%, rgba(126, 91, 255, .10), transparent 60%),
+    rgba(255,255,255,.038);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 -1px 0 rgba(0,0,0,.28);
+}
+body[data-project="eye-photography"] .section--alt{
+  background:
+    radial-gradient(840px 420px at 15% 10%, rgba(82, 162, 255, .13), transparent 58%),
+    radial-gradient(820px 420px at 85% 0%, rgba(100, 149, 255, .10), transparent 56%),
+    rgba(255,255,255,.032);
+}
+body[data-project="eye-photography"] .eyeHero{
+  background: linear-gradient(180deg, #101827 0%, #0b111b 100%);
+}
+body[data-project="eye-photography"] .eyeHero__video{
+  opacity: .96;
+  filter: brightness(1.06) saturate(1.03) contrast(1.01);
+}
+body[data-project="eye-photography"] #about .eyeRow,
+body[data-project="eye-photography"] #explore-options .eyeRow,
+body[data-project="eye-photography"] #extras .eyeRow{
+  padding: 1rem 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+body[data-project="eye-photography"] .eyeRow__media,
+body[data-project="eye-photography"] .projectHeroTile,
+body[data-project="eye-photography"] .eyeGallery .thumb{
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 1px rgba(86, 163, 255, .10);
+}
+body[data-project="eye-photography"] .eyeRow__media img,
+body[data-project="eye-photography"] .projectHeroTile img,
+body[data-project="eye-photography"] .eyeGallery .thumb img{
+  filter: brightness(1.08) saturate(1.04) contrast(1.02);
+  box-shadow: none;
+}
+body[data-project="eye-photography"] .eyeRow__media img,
+body[data-project="eye-photography"] .projectHeroTile,
+body[data-project="eye-photography"] .eyeGallery .thumb{
+  border: 1px solid rgba(86, 163, 255, .36);
+}
+body[data-project="eye-photography"] .eyeRow:hover .eyeRow__media img,
+body[data-project="eye-photography"] .eyeRow:focus-within .eyeRow__media img,
+body[data-project="eye-photography"] .projectHeroTile:hover,
+body[data-project="eye-photography"] .projectHeroTile:focus-within,
+body[data-project="eye-photography"] .eyeGallery .thumb:hover,
+body[data-project="eye-photography"] .eyeGallery .thumb:focus-within{
+  border-color: rgba(86, 163, 255, .46);
+  box-shadow: 0 0 0 1px rgba(86, 163, 255, .16), 0 0 28px rgba(56, 189, 248, .12);
+}
+body[data-project="eye-photography"] .eyeGallery .thumb::after,
+body[data-project="eye-photography"] .frameLink__overlay{
+  background: transparent;
+}
+body[data-project="eye-photography"] .thumb .badge{
+  background: rgba(10, 17, 27, .58);
+}
+
+/* Eye photography refinements */
+body[data-project="eye-photography"] .eyeRow{align-items:start;}
+body[data-project="eye-photography"] .eyeRow__text{align-self:start;padding-top:.05rem;}
+body[data-project="eye-photography"] .bookingCard__copy{text-align:center;display:grid;justify-items:center;}
+body[data-project="eye-photography"] .bookingCard__status{margin-left:auto;margin-right:auto;}
+.eyeGalleryIntro{max-width:68ch;margin:-.45rem 0 1.4rem}
+
+/* Static per-person pricing cards */
+.pricingCard--static{
+  padding-top:1.15rem;
+}
+.pricingCard--static .priceTag,
+.priceTag--text{
+  position:static;
+  display:inline-flex;
+  width:auto;
+  max-width:100%;
+  margin:0 0 .75rem;
+  white-space:normal;
+  text-align:left;
+  line-height:1.25;
+}
+
+
+/* BKVP contact form refinements: modern select + camera submit overlay (2026-05) */
+.field select,
+.form select{
+  appearance:none;
+  -webkit-appearance:none;
+  min-height:48px;
+  padding-right:3.2rem !important;
+  cursor:pointer;
+  background-color:rgba(0,0,0,.25);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236ae6ff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 1.1rem center;
+  background-size:1.05rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.field select:hover,
+.form select:hover{
+  border-color:rgba(106,230,255,.28);
+  box-shadow:0 0 0 1px rgba(106,230,255,.08), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.form select option{
+  color:#111827;
+  background:#ffffff;
+}
+.enhancedSelectNative{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  margin:-1px !important;
+  padding:0 !important;
+  border:0 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  clip:rect(0 0 0 0) !important;
+  clip-path:inset(50%) !important;
+  overflow:hidden !important;
+}
+.customSelect{
+  position:relative;
+  width:100%;
+  margin-top:.35rem;
+  z-index:20;
+}
+.customSelect.is-open{z-index:80;}
+.customSelect__button{
+  width:100%;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.9rem;
+  padding:.82rem 1.1rem .82rem 1rem;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg, rgba(15,22,31,.96), rgba(9,15,23,.96));
+  color:var(--text);
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 12px 28px rgba(0,0,0,.14);
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
+}
+.customSelect__button:hover,
+.customSelect__button:focus-visible{
+  border-color:rgba(106,230,255,.38);
+  box-shadow:0 0 0 3px rgba(106,230,255,.10), inset 0 1px 0 rgba(255,255,255,.05), 0 16px 32px rgba(0,0,0,.18);
+  outline:0;
+}
+.customSelect.is-open .customSelect__button{
+  border-color:rgba(106,230,255,.48);
+  box-shadow:0 0 0 3px rgba(106,230,255,.13), 0 0 26px rgba(106,230,255,.10), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.customSelect__value{
+  display:block;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.customSelect.is-placeholder .customSelect__value{color:rgba(238,243,248,.82);}
+.customSelect__chevron{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  display:grid;
+  place-items:center;
+  margin-right:.1rem;
+  border-radius:999px;
+  color:#6ae6ff;
+  background:rgba(106,230,255,.08);
+  transition:transform .18s ease, background .18s ease;
+}
+.customSelect__chevron::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-2px);
+}
+.customSelect.is-open .customSelect__chevron{
+  transform:rotate(180deg);
+  background:rgba(106,230,255,.14);
+}
+.customSelect__list{
+  position:absolute;
+  left:0;
+  right:0;
+  top:calc(100% + .45rem);
+  z-index:90;
+  margin:0;
+  padding:.38rem;
+  list-style:none;
+  max-height:min(270px, 45vh);
+  overflow:auto;
+  border-radius:18px;
+  border:1px solid rgba(106,230,255,.20);
+  background:rgba(8,13,20,.98);
+  backdrop-filter:blur(18px);
+  box-shadow:0 24px 70px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.04) inset;
+  opacity:0;
+  transform:translateY(-6px) scale(.985);
+  pointer-events:none;
+  transition:opacity .16s ease, transform .16s ease;
+}
+.customSelect.is-open .customSelect__list{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.customSelect__option{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  min-height:42px;
+  padding:.68rem .78rem;
+  border-radius:13px;
+  color:var(--text);
+  cursor:pointer;
+  line-height:1.25;
+  transition:background .14s ease, color .14s ease, transform .14s ease;
+}
+.customSelect__option:hover,
+.customSelect__option.is-active{
+  background:rgba(106,230,255,.11);
+  color:#ffffff;
+}
+.customSelect__option.is-selected{
+  background:linear-gradient(90deg, rgba(106,230,255,.18), rgba(180,107,255,.11));
+  box-shadow:inset 0 0 0 1px rgba(106,230,255,.14);
+}
+.customSelect__option[aria-disabled="true"]{
+  color:rgba(238,243,248,.58);
+  cursor:default;
+}
+.customSelect__option[aria-disabled="true"]:hover{background:transparent;}
+.field--invalid .customSelect__button,
+.form input[aria-invalid="true"],
+.form select[aria-invalid="true"] + .customSelect .customSelect__button,
+.form textarea[aria-invalid="true"]{
+  border-color:rgba(255,91,91,.72) !important;
+  box-shadow:0 0 0 3px rgba(255,91,91,.12) !important;
+}
+.form-status{
+  width:100%;
+  text-align:center !important;
+}
+.formStatusCall{
+  color:var(--text);
+  font-weight:800;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.formState{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.72rem;
+  width:100%;
+  min-height:54px;
+}
+.formState__text{
+  display:inline-block;
+  line-height:1.35;
+}
+.formState__circle{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  display:inline-grid;
+  place-items:center;
+  border-radius:999px;
+  font-size:1.35rem;
+  font-weight:900;
+  line-height:1;
+}
+.formState--success .formState__circle{
+  color:#04110b;
+  background:var(--ok);
+  box-shadow:0 0 0 6px rgba(91,255,176,.12), 0 0 28px rgba(91,255,176,.30);
+}
+.formState--error .formState__circle{
+  color:#fff;
+  background:var(--danger);
+  box-shadow:0 0 0 6px rgba(255,91,91,.12), 0 0 28px rgba(255,91,91,.28);
+}
+.formState__dots{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-width:48px;
+}
+.formState__dots span{
+  width:9px;
+  height:9px;
+  border-radius:999px;
+  background:var(--glow);
+  box-shadow:0 0 14px rgba(106,230,255,.5);
+  animation:bkvpFormDots .7s infinite alternate;
+}
+.formState__dots span:nth-child(2){animation-delay:.16s}
+.formState__dots span:nth-child(3){animation-delay:.32s}
+@keyframes bkvpFormDots{
+  from{transform:translateY(0);opacity:.45}
+  to{transform:translateY(-7px);opacity:1}
+}
+.form button[disabled]{
+  opacity:.72;
+  cursor:wait;
+}
+@media (max-width:640px){
+  .customSelect__button{border-radius:15px;min-height:48px;padding-right:.78rem;}
+  .customSelect__list{border-radius:16px;max-height:min(245px, 50vh);}
+  .customSelect__option{min-height:40px;padding:.62rem .7rem;font-size:.94rem;}
+  .form-status{padding:.55rem .65rem !important;border-radius:12px !important;font-size:.88rem !important;line-height:1.35 !important;}
+  .formState{min-height:38px !important;gap:.5rem !important;}
+  .formState__circle{width:24px !important;height:24px !important;flex-basis:24px !important;font-size:1rem !important;box-shadow:none !important;}
+  .formState__dots{min-width:34px !important;gap:5px !important;}
+  .formState__dots span{width:6px !important;height:6px !important;}
+  .formStatusCall{white-space:nowrap !important;}
+}
+.submitOverlay{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:grid;
+  place-items:center;
+  padding:1rem;
+}
+.submitOverlay[hidden]{display:none !important;}
+.submitOverlay__backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(4,4,7,.78);
+  backdrop-filter:blur(8px);
+}
+.submitOverlay__panel{
+  position:relative;
+  z-index:1;
+  width:min(92vw, 360px);
+  padding:1.35rem 1.15rem 1.1rem;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(12,15,22,.88);
+  box-shadow:0 24px 70px rgba(0,0,0,.5);
+}
+.submitOverlay__state{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.95rem;
+  text-align:center;
+}
+.submitOverlay[data-state="sending"] .submitOverlay__state--sending,
+.submitOverlay[data-state="success"] .submitOverlay__state--success,
+.submitOverlay[data-state="error"] .submitOverlay__state--error{display:flex;}
+.submitOverlay__ring{
+  position:relative;
+  width:132px;
+  height:132px;
+}
+.submitOverlay__svg{
+  width:132px;
+  height:132px;
+  display:block;
+}
+.submitOverlay__track,
+.submitOverlay__value{
+  fill:none;
+  stroke-width:7;
+  transform-origin:60px 60px;
+}
+.submitOverlay__track{stroke:rgba(255,255,255,.13);}
+.submitOverlay__value{stroke-linecap:round;}
+.submitOverlay__value--sending{
+  stroke:#3b82f6;
+  stroke-dasharray:110 204;
+  animation:submitOverlaySpin 1.35s linear infinite;
+  filter:drop-shadow(0 0 14px rgba(59,130,246,.35));
+}
+.submitOverlay__icon{
+  position:absolute;
+  inset:50% auto auto 50%;
+  transform:translate(-50%,-50%);
+  width:54px;
+  height:54px;
+  color:#60a5fa;
+}
+.submitOverlay__icon svg{width:100%;height:100%;display:block;}
+.submitOverlay__dots{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.submitOverlay__dots span{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:#3b82f6;
+  box-shadow:0 0 14px rgba(59,130,246,.45);
+  animation:submitOverlayDots .65s infinite alternate;
+}
+.submitOverlay__dots span:nth-child(2){animation-delay:.15s}
+.submitOverlay__dots span:nth-child(3){animation-delay:.3s}
+.submitOverlay__track--success{stroke:rgba(91,255,176,.18);}
+.submitOverlay__value--success{
+  stroke:var(--ok);
+  stroke-dasharray:314.16;
+  stroke-dashoffset:314.16;
+  transform:rotate(-90deg);
+  filter:drop-shadow(0 0 16px rgba(91,255,176,.28));
+}
+.submitOverlay__check{
+  fill:none;
+  stroke:var(--ok);
+  stroke-width:8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:78;
+  stroke-dashoffset:78;
+  filter:drop-shadow(0 0 10px rgba(91,255,176,.18));
+}
+.submitOverlay.play-success .submitOverlay__value--success{animation:submitOverlayCircleDraw 1.05s ease forwards;}
+.submitOverlay.play-success .submitOverlay__check{animation:submitOverlayCheckDraw .5s ease .78s forwards;}
+.submitOverlay__track--error{stroke:rgba(255,91,91,.18);}
+.submitOverlay__value--error{
+  stroke:var(--danger);
+  stroke-dasharray:314.16;
+  stroke-dashoffset:314.16;
+  transform:rotate(-90deg);
+  filter:drop-shadow(0 0 16px rgba(255,91,91,.26));
+}
+.submitOverlay__x{
+  fill:none;
+  stroke:var(--danger);
+  stroke-width:8;
+  stroke-linecap:round;
+  stroke-dasharray:54;
+  stroke-dashoffset:54;
+  filter:drop-shadow(0 0 10px rgba(255,91,91,.18));
+}
+.submitOverlay.play-error .submitOverlay__value--error{animation:submitOverlayCircleDraw 1.05s ease forwards;}
+.submitOverlay.play-error .submitOverlay__x--one{animation:submitOverlayXDraw .36s ease .55s forwards;}
+.submitOverlay.play-error .submitOverlay__x--two{animation:submitOverlayXDraw .36s ease .75s forwards;}
+.submitOverlay__text{
+  margin:0;
+  color:var(--text);
+  font-weight:700;
+  font-size:1rem;
+  line-height:1.35;
+}
+@keyframes submitOverlaySpin{from{transform:rotate(-90deg)}to{transform:rotate(270deg)}}
+@keyframes submitOverlayDots{from{transform:translateY(0);opacity:.45}to{transform:translateY(-7px);opacity:1}}
+@keyframes submitOverlayCircleDraw{from{stroke-dashoffset:314.16}to{stroke-dashoffset:0}}
+@keyframes submitOverlayCheckDraw{from{stroke-dashoffset:78}to{stroke-dashoffset:0}}
+@keyframes submitOverlayXDraw{from{stroke-dashoffset:54}to{stroke-dashoffset:0}}
+@media (max-width:640px){
+  .submitOverlay__panel{width:min(90vw, 300px);padding:1.05rem .95rem .9rem;border-radius:22px;}
+  .submitOverlay__ring,.submitOverlay__svg{width:104px;height:104px;}
+  .submitOverlay__icon{width:44px;height:44px;}
+  .submitOverlay__dots{gap:7px;}
+  .submitOverlay__dots span{width:8px;height:8px;}
+  .submitOverlay__text{font-size:.92rem;}
+}
+@media (max-width:360px){
+  .submitOverlay__panel{width:min(92vw, 280px);}
+  .submitOverlay__ring,.submitOverlay__svg{width:96px;height:96px;}
+  .submitOverlay__icon{width:40px;height:40px;}
+}
+@media (prefers-reduced-motion: reduce){
+  .submitOverlay__value--sending,
+  .submitOverlay__dots span,
+  .submitOverlay.play-success .submitOverlay__value--success,
+  .submitOverlay.play-success .submitOverlay__check,
+  .submitOverlay.play-error .submitOverlay__value--error,
+  .submitOverlay.play-error .submitOverlay__x{animation:none !important;}
+  .submitOverlay.play-success .submitOverlay__value--success,
+  .submitOverlay.play-success .submitOverlay__check,
+  .submitOverlay.play-error .submitOverlay__value--error,
+  .submitOverlay.play-error .submitOverlay__x{stroke-dashoffset:0 !important;}
+}
+
+
+@media (max-width:640px){
+  body[data-project="eye-photography"] .projectMap--withFallback{min-height:auto;}
+  body[data-project="eye-photography"] .projectMap__fallback,
+  body[data-project="eye-photography"] .projectMap iframe{height:100%;}
+  body[data-project="eye-photography"] .eyeMapPanel{text-align:center;align-items:center;}
+  body[data-project="eye-photography"] .eyeMapPanel .hoursList{display:inline-block;text-align:left;margin-left:auto;margin-right:auto;}
+  body[data-project="eye-photography"] .eyeMapPanel .btn{display:inline-flex;justify-content:center;align-self:center;margin-left:auto;margin-right:auto;min-width:min(100%, 210px);}
+}
+
+
+/* Eye Photography final refinements (FAQ lazy load, select height, map button spacing) */
+.field select,
+.form select{
+  height:52px;
+  min-height:52px;
+}
+.customSelect__button{
+  height:52px;
+  min-height:52px;
+  padding:.45rem .82rem .45rem 1rem;
+}
+.customSelect__chevron{
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  margin-right:.05rem;
+}
+.customSelect__list{
+  top:calc(100% + .55rem);
+  border-radius:20px;
+}
+@media (max-width:640px){
+  .customSelect__button{
+    height:52px;
+    min-height:52px;
+    padding:.45rem .76rem .45rem .95rem;
+  }
+}
+
+body[data-project="eye-photography"] .eyeMapPanel{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+body[data-project="eye-photography"] .eyeMapPanel .hoursList{
+  margin:.85rem auto 1.25rem;
+  text-align:left;
+}
+body[data-project="eye-photography"] .eyeMapPanel .muted{
+  margin:.05rem auto 1.1rem;
+}
+body[data-project="eye-photography"] .eyeMapPanel .btn{
+  display:inline-flex;
+  justify-content:center;
+  align-self:center;
+  margin:.55rem auto 0;
+  min-width:min(100%, 210px);
+}
+
+.eyeFaq--lazy .eyeFaq__item.is-faq-new{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .42s ease, transform .42s ease;
+}
+.eyeFaq--lazy .eyeFaq__item.is-faq-visible{
+  opacity:1;
+  transform:none;
+}
+.eyeFaqLoader{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  min-height:46px;
+  margin:.35rem auto 0;
+}
+.eyeFaqLoader[hidden]{display:none !important;}
+.eyeFaqLoader span{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:var(--glow);
+  box-shadow:0 0 16px rgba(106,230,255,.45);
+  animation:eyeFaqDots .72s infinite alternate;
+}
+.eyeFaqLoader span:nth-child(2){animation-delay:.15s;}
+.eyeFaqLoader span:nth-child(3){animation-delay:.3s;}
+@keyframes eyeFaqDots{
+  from{opacity:.42;transform:translateY(0);}
+  to{opacity:1;transform:translateY(-7px);}
+}
+@media (prefers-reduced-motion: reduce){
+  .eyeFaq--lazy .eyeFaq__item.is-faq-new,
+  .eyeFaqLoader span{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+
+
+/* BKVP v4: make the enhanced category select the same height as normal text inputs */
+.customSelect__button{
+  height:48px !important;
+  min-height:48px !important;
+  box-sizing:border-box;
+  padding:0 .72rem 0 .9rem !important;
+  border-radius:14px !important;
+}
+.customSelect__chevron{
+  width:28px !important;
+  height:28px !important;
+  flex-basis:28px !important;
+}
+@media (max-width:640px){
+  .customSelect__button{
+    height:48px !important;
+    min-height:48px !important;
+    padding:0 .68rem 0 .9rem !important;
+  }
+}
+
+
+/* Fixed WhatsApp contact button */
+.whatsappFloat{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:9997;
+  width:56px;
+  height:56px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:#25D366;
+  color:#fff;
+  border:2px solid rgba(255,255,255,.92);
+  box-shadow:0 16px 42px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.16), 0 0 0 1px rgba(255,255,255,.08) inset;
+  transition:transform .16s ease, box-shadow .2s ease;
+}
+.whatsappFloat:hover,.whatsappFloat:focus-visible{transform:translateY(-2px);box-shadow:0 20px 48px rgba(0,0,0,.42), 0 0 0 3px rgba(255,255,255,.22), 0 0 0 1px rgba(255,255,255,.12) inset;}
+.whatsappFloat:focus-visible{outline:2px solid var(--glow);outline-offset:3px;}
+.whatsappFloat svg{width:28px;height:28px;fill:currentColor;}
+@media (max-width:640px){
+  .whatsappFloat{right:16px;bottom:16px;width:52px;height:52px;}
+  .whatsappFloat svg{width:26px;height:26px;}
+}
+
+.hoursList--split{
+  list-style:none;
+  padding-left:0;
+  display:grid;
+  gap:.35rem;
+  width:100%;
+}
+.hoursList--split li{margin:0;}
+.hoursList--split .hoursList__item{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) auto;
+  gap:.9rem;
+  align-items:center;
+}
+.hoursList--split .hoursList__item--open{color:var(--ok);}
+.hoursList--split .hoursList__item--closed{color:var(--danger);}
+.hoursList--split .hoursList__item span:last-child{text-align:right;}
+.footer span[aria-hidden="true"]{font-size:1em;line-height:inherit;}
+body[data-project="eye-photography"] .bookingCard__status{margin-top:1.15rem;}
+body[data-project="eye-photography"] .bookingCard__actions{padding-top:0;}
+body[data-project="eye-photography"] .bookingCard__selected{display:none;min-height:0;}
+.field select,
+.form select{
+  height:48px !important;
+  min-height:48px !important;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+}
+
+
+/* Eye Photography follow-up refinements: mobile FAQ text, desktop pricing/add-on alignment, form field height matching */
+@media (max-width:640px){
+  body[data-project="eye-photography"] .eyeFaq summary{
+    font-size:14.5px;
+    line-height:1.4;
+  }
+  body[data-project="eye-photography"] .eyeFaq p{
+    font-size:14px;
+    line-height:1.55;
+  }
+}
+
+body[data-project="eye-photography"] #gallery .section-head{
+  margin-bottom:.45rem;
+  width:100%;
+}
+body[data-project="eye-photography"] #gallery .section-head > div{
+  width:100%;
+}
+body[data-project="eye-photography"] .eyeGallerySubtitle{
+  margin:.2rem 0 0;
+  color:var(--muted);
+  font-weight:800;
+  font-size:clamp(1.05rem,1.75vw,1.32rem);
+  line-height:1.25;
+}
+body[data-project="eye-photography"] #gallery .eyeGalleryIntro{
+  width:100%;
+  max-width:none;
+  margin:.25rem 0 1.4rem;
+}
+body[data-project="eye-photography"] #about .eyeRow__text p{
+  text-align:justify;
+}
+
+@media (min-width:920px){
+  body[data-project="eye-photography"] #explore-options .eyeLanding,
+  body[data-project="eye-photography"] #extras .eyeLanding{
+    display:grid;
+    gap:1.65rem;
+    align-items:stretch;
+  }
+  body[data-project="eye-photography"] #explore-options .section-head,
+  body[data-project="eye-photography"] #extras .section-head{
+    width:100%;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow{
+    display:grid;
+    grid-template-columns:minmax(280px,320px) minmax(0,560px);
+    gap:clamp(2rem,6vw,4.5rem);
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding:0;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow--reverse{
+    grid-template-columns:minmax(0,560px) minmax(280px,320px);
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow--reverse .eyeRow__media{
+    order:2;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__media,
+  body[data-project="eye-photography"] #extras .eyeRow__media{
+    width:100%;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__media img,
+  body[data-project="eye-photography"] #extras .eyeRow__media img{
+    display:block;
+    width:100%;
+    aspect-ratio:1 / 1;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text,
+  body[data-project="eye-photography"] #extras .eyeRow__text{
+    align-self:center;
+    width:100%;
+    padding-top:0;
+    text-align:left;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text{
+    max-width:560px;
+    justify-self:end;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow--reverse .eyeRow__text{
+    justify-self:start;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text h3,
+  body[data-project="eye-photography"] #extras .eyeRow__text h3{
+    margin-bottom:.55rem;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text p,
+  body[data-project="eye-photography"] #extras .eyeRow__text p{
+    max-width:100%;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text ul,
+  body[data-project="eye-photography"] #extras .eyeRow__text ul{
+    width:100%;
+    max-width:100%;
+    margin:.7rem 0 0;
+    padding-left:1.2rem;
+    text-align:left;
+  }
+  body[data-project="eye-photography"] #extras .eyeRow{
+    display:grid;
+    grid-template-columns:minmax(260px,320px) minmax(0,480px);
+    gap:clamp(1.6rem,4vw,3rem);
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    max-width:880px;
+    margin:0 auto;
+    padding:0;
+  }
+  body[data-project="eye-photography"] #extras .eyeRow__text{
+    max-width:480px;
+    justify-self:start;
+  }
+}
+
+.form input,
+.form select,
+.field input,
+.field select{
+  height:48px !important;
+  min-height:48px !important;
+  box-sizing:border-box;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+}
+.form textarea,
+.field textarea{
+  box-sizing:border-box;
+}
+
+/* Eye Photography pricing and add-ons mockup style */
+body[data-project="eye-photography"] #explore-options .eyeLanding,
+body[data-project="eye-photography"] #extras .eyeLanding{
+  gap:1.3rem;
+}
+body[data-project="eye-photography"] .eyePricingPanel,
+body[data-project="eye-photography"] .eyeAddonsPanel{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  width:100%;
+  border:1px solid rgba(148, 190, 255, .22);
+  border-radius:20px;
+  background:
+    radial-gradient(480px 280px at 0% 50%, rgba(86,163,255,.18), transparent 62%),
+    radial-gradient(620px 340px at 72% 0%, rgba(56,189,248,.08), transparent 58%),
+    linear-gradient(135deg, rgba(6,13,23,.95), rgba(10,18,30,.9));
+  box-shadow:0 18px 48px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
+body[data-project="eye-photography"] .eyePricingPanel{
+  grid-template-columns:minmax(240px, .95fr) minmax(190px, .55fr) minmax(0, 2.1fr);
+  align-items:center;
+  min-height:360px;
+  padding:clamp(1.25rem,3vw,2.6rem) clamp(1rem,3vw,2.8rem) clamp(1.25rem,3vw,2.6rem) 0;
+}
+body[data-project="eye-photography"] .eyePricingPanel__visual{
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:min(34%, 430px);
+  pointer-events:none;
+}
+body[data-project="eye-photography"] .eyePricingPanel__visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(4,10,18,.08), rgba(6,13,23,.62) 70%, rgba(6,13,23,.94));
+}
+body[data-project="eye-photography"] .eyePricingPanel__visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  filter:brightness(.92) saturate(1.05) contrast(1.08);
+  transform:scale(1.08);
+}
+body[data-project="eye-photography"] .eyePricingPanel__title,
+body[data-project="eye-photography"] .eyePricingGrid,
+body[data-project="eye-photography"] .eyeAddonsPanel__title,
+body[data-project="eye-photography"] .eyeAddonsGrid{
+  position:relative;
+  z-index:1;
+}
+body[data-project="eye-photography"] .eyePricingPanel__title{
+  grid-column:2;
+  margin:0;
+  padding:0 1.4rem;
+}
+body[data-project="eye-photography"] .eyePricingPanel__title h2,
+body[data-project="eye-photography"] .eyeAddonsPanel__title h2{
+  margin:0;
+}
+body[data-project="eye-photography"] .eyePricingPanel__title h2::after,
+body[data-project="eye-photography"] .eyeAddonsPanel__title h2::after{
+  content:"";
+  display:block;
+  width:52px;
+  height:2px;
+  margin:.9rem 0 0;
+  border-radius:999px;
+  background:rgba(136,201,155,.92);
+}
+body[data-project="eye-photography"] .eyePricingGrid,
+body[data-project="eye-photography"] .eyeAddonsGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap:0;
+  align-items:start;
+}
+body[data-project="eye-photography"] .eyePricingGrid{
+  grid-column:3;
+}
+body[data-project="eye-photography"] .eyePricingItem,
+body[data-project="eye-photography"] .eyeAddonItem{
+  min-width:0;
+  padding:clamp(.45rem,1.7vw,1.35rem) clamp(1rem,2.4vw,2.1rem);
+  text-align:left;
+}
+body[data-project="eye-photography"] .eyePricingItem + .eyePricingItem,
+body[data-project="eye-photography"] .eyeAddonItem + .eyeAddonItem{
+  border-left:1px solid rgba(148, 190, 255, .24);
+}
+body[data-project="eye-photography"] .eyePricingItem__header{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.45rem .75rem;
+  margin:0 0 .65rem;
+}
+body[data-project="eye-photography"] .eyePricingItem__header h3{
+  margin:0;
+}
+body[data-project="eye-photography"] .eyePricingItem__header .eyePrice{
+  margin:0;
+}
+body[data-project="eye-photography"] .eyePricingItem p,
+body[data-project="eye-photography"] .eyeAddonItem p{
+  margin:.35rem 0 .8rem;
+}
+body[data-project="eye-photography"] .eyePricingItem ul,
+body[data-project="eye-photography"] .eyeAddonItem ul{
+  margin:.75rem 0 0;
+  padding-left:1.15rem;
+  text-align:left;
+}
+body[data-project="eye-photography"] .eyeAddonsPanel{
+  padding:clamp(1.25rem,3vw,2.1rem);
+  grid-template-columns:minmax(180px, .42fr) minmax(0, 1fr);
+  gap:clamp(1rem,3vw,2rem);
+  align-items:start;
+}
+body[data-project="eye-photography"] .eyeAddonsPanel__title{
+  margin:0;
+  padding:0;
+}
+body[data-project="eye-photography"] .eyeAddonsGrid{
+  max-width:980px;
+  width:100%;
+}
+body[data-project="eye-photography"] .eyeAddonItem{
+  border:1px solid rgba(148, 190, 255, .18);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+}
+@media (min-width:1200px){
+  body[data-project="eye-photography"] .eyePricingGrid,
+  body[data-project="eye-photography"] .eyeAddonsGrid{
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+@media (max-width:1050px){
+  body[data-project="eye-photography"] .eyePricingPanel{
+    grid-template-columns:minmax(160px,.55fr) minmax(0,1.45fr);
+    padding-left:clamp(1rem,3vw,1.5rem);
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual{
+    width:280px;
+    opacity:.42;
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__title{
+    grid-column:1 / -1;
+    padding:0 0 .35rem;
+  }
+  body[data-project="eye-photography"] .eyePricingGrid{
+    grid-column:1 / -1;
+  }
+}
+@media (max-width:760px){
+  body[data-project="eye-photography"] .eyePricingPanel,
+  body[data-project="eye-photography"] .eyeAddonsPanel{
+    display:grid;
+    grid-template-columns:1fr;
+    padding:1.15rem;
+    border-radius:18px;
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual{
+    position:absolute;
+    width:100%;
+    height:170px;
+    opacity:.2;
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual::after{
+    background:linear-gradient(180deg, rgba(6,13,23,.2), rgba(6,13,23,.96));
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__title,
+  body[data-project="eye-photography"] .eyePricingGrid,
+  body[data-project="eye-photography"] .eyeAddonsGrid{
+    grid-column:1;
+  }
+  body[data-project="eye-photography"] .eyePricingGrid,
+  body[data-project="eye-photography"] .eyeAddonsGrid{
+    grid-template-columns:1fr;
+    gap:.9rem;
+  }
+  body[data-project="eye-photography"] .eyePricingItem,
+  body[data-project="eye-photography"] .eyeAddonItem{
+    padding:1rem 0 0;
+  }
+  body[data-project="eye-photography"] .eyePricingItem + .eyePricingItem,
+  body[data-project="eye-photography"] .eyeAddonItem + .eyeAddonItem{
+    border-left:0;
+    border-top:1px solid rgba(148, 190, 255, .18);
+  }
+  body[data-project="eye-photography"] .eyeAddonItem{
+    padding:1rem;
+  }
+}
+
+
+body[data-project="eye-photography"] .eyePricingPanel__title .kicker,
+body[data-project="eye-photography"] .eyeAddonsPanel__title .kicker{
+  display:none;
+}
+
+@media (min-width:920px){
+  body[data-project="eye-photography"] #explore-options > .container,
+  body[data-project="eye-photography"] #extras > .container{
+    width:min(1420px, calc(100% - 2rem));
+  }
+  body[data-project="eye-photography"] .eyePricingPanel{
+    grid-template-columns:minmax(230px, 28%) minmax(150px, 18%) minmax(0, 1fr);
+    align-items:center;
+    min-height:230px;
+    padding:clamp(1.15rem,2vw,1.75rem) clamp(1.15rem,2.2vw,2.2rem) clamp(1.15rem,2vw,1.75rem) 0;
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual{
+    width:clamp(240px, 30%, 360px);
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual::after{
+    background:linear-gradient(90deg, rgba(4,10,18,.02), rgba(6,13,23,.34) 62%, rgba(6,13,23,.92));
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual img{
+    object-position:center center;
+    transform:scale(1.55);
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__title{
+    grid-column:2;
+    align-self:center;
+    justify-self:start;
+    width:100%;
+    padding:0 clamp(.9rem,2vw,1.55rem);
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__title h2{
+    font-size:clamp(1.9rem,3.1vw,3rem);
+    line-height:1.12;
+    letter-spacing:-.035em;
+    max-width:7.5ch;
+  }
+  body[data-project="eye-photography"] .eyePricingGrid{
+    grid-column:3;
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+    align-items:stretch;
+  }
+  body[data-project="eye-photography"] .eyePricingItem{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:176px;
+    padding:.15rem clamp(1rem,2.2vw,2.1rem);
+  }
+  body[data-project="eye-photography"] .eyePricingItem__header{
+    align-items:center;
+    gap:.45rem .8rem;
+    margin-bottom:.55rem;
+  }
+  body[data-project="eye-photography"] .eyePricingItem p{
+    margin:.25rem 0 .55rem;
+  }
+  body[data-project="eye-photography"] .eyePricingItem ul{
+    margin:.55rem 0 0;
+  }
+  body[data-project="eye-photography"] .eyeAddonsPanel{
+    grid-template-columns:minmax(150px, 22%) minmax(0, 1fr);
+    align-items:center;
+    min-height:168px;
+    padding:clamp(1.2rem,2.1vw,1.9rem) clamp(1.2rem,2.3vw,2.2rem);
+  }
+  body[data-project="eye-photography"] .eyeAddonsPanel__title{
+    align-self:center;
+    justify-self:start;
+    width:100%;
+  }
+  body[data-project="eye-photography"] .eyeAddonsPanel__title h2{
+    font-size:clamp(1.65rem,2.3vw,2.35rem);
+    line-height:1.15;
+    letter-spacing:-.03em;
+  }
+  body[data-project="eye-photography"] .eyeAddonsGrid{
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 420px));
+    justify-content:center;
+    align-items:stretch;
+    gap:1rem;
+  }
+  body[data-project="eye-photography"] .eyeAddonItem{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:100%;
+    max-width:460px;
+    padding:1rem clamp(1rem,2vw,1.45rem);
+  }
+  body[data-project="eye-photography"] .eyeAddonItem ul{
+    margin:.55rem 0 0;
+  }
+}
+
+@media (min-width:920px) and (max-width:1120px){
+  body[data-project="eye-photography"] .eyePricingPanel{
+    grid-template-columns:minmax(210px, 26%) minmax(130px, 16%) minmax(0, 1fr);
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__visual{
+    width:clamp(220px, 28%, 300px);
+  }
+  body[data-project="eye-photography"] .eyePricingPanel__title h2{
+    font-size:clamp(1.65rem,2.8vw,2.4rem);
+  }
+  body[data-project="eye-photography"] .eyePricingGrid{
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  }
+  body[data-project="eye-photography"] .eyePricingItem{
+    padding:.1rem clamp(.8rem,1.8vw,1.4rem);
+  }
+}
+
+/* Eye Photography pricing and add-ons original row layout */
+@media (min-width:920px){
+  body[data-project="eye-photography"] #explore-options > .container,
+  body[data-project="eye-photography"] #extras > .container{
+    width:min(var(--max), calc(100% - 2rem));
+  }
+  body[data-project="eye-photography"] #explore-options .eyeLanding,
+  body[data-project="eye-photography"] #extras .eyeLanding{
+    gap:1.55rem;
+    align-items:start;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow,
+  body[data-project="eye-photography"] #extras .eyeRow{
+    display:grid;
+    grid-template-columns:minmax(260px,320px) minmax(0,700px);
+    gap:clamp(1.35rem,3vw,3rem);
+    align-items:start;
+    justify-content:start;
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding:1rem 0;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__media,
+  body[data-project="eye-photography"] #extras .eyeRow__media{
+    width:100%;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__media img,
+  body[data-project="eye-photography"] #extras .eyeRow__media img{
+    display:block;
+    width:100%;
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text,
+  body[data-project="eye-photography"] #extras .eyeRow__text{
+    align-self:start;
+    justify-self:start;
+    width:100%;
+    max-width:700px;
+    padding-top:0;
+    text-align:left;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text p,
+  body[data-project="eye-photography"] #extras .eyeRow__text p{
+    max-width:100%;
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text ul,
+  body[data-project="eye-photography"] #extras .eyeRow__text ul{
+    width:100%;
+    max-width:100%;
+    margin:.7rem 0 0;
+    padding-left:1.2rem;
+    text-align:left;
+  }
+}
+
+@media (min-width:1200px){
+  body[data-project="eye-photography"] #explore-options .eyeRow,
+  body[data-project="eye-photography"] #extras .eyeRow{
+    grid-template-columns:minmax(300px,340px) minmax(0,760px);
+    gap:clamp(1.75rem,3.4vw,3.6rem);
+  }
+  body[data-project="eye-photography"] #explore-options .eyeRow__text,
+  body[data-project="eye-photography"] #extras .eyeRow__text{
+    max-width:760px;
+  }
+}
+
+/* =========================================================
+   Eye Photography final intro fix
+   - lets the intro media start behind the fixed navbar
+   - makes the hero feel taller/larger
+   - adds a darker readability gradient and stronger title visibility
+   ========================================================= */
+body[data-project="eye-photography"]{
+  --nav-bg: rgba(5, 8, 14, .50);
+}
+
+body[data-project="eye-photography"] main{
+  padding-top: 0;
+}
+
+body[data-project="eye-photography"] .eyeHero{
+  min-height: 100svh;
+  padding-top: var(--nav-offset);
+  background: url("/assets/img/eye1.jpeg") center / cover no-repeat;
+}
+
+@supports not (height: 100svh){
+  body[data-project="eye-photography"] .eyeHero{
+    min-height: 100vh;
+  }
+}
+
+body[data-project="eye-photography"] .eyeHero__video{
+  transform: scale(1.06);
+  transform-origin: center center;
+}
+
+body[data-project="eye-photography"] .eyeHero__shade{
+  background: none;
+}
+
+body[data-project="eye-photography"] .eyeHero__content{
+  text-shadow: 0 2px 22px rgba(0,0,0,.82);
+}
+
+body[data-project="eye-photography"] .eyeHero__content .kicker{
+  background: linear-gradient(135deg, #ffffff 0%, #bceeff 48%, #dec9ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  font-weight: 900;
+  filter:
+    drop-shadow(0 2px 7px rgba(0,0,0,.92))
+    drop-shadow(0 0 18px rgba(106,230,255,.36));
+}
+
+body[data-project="eye-photography"] .eyeHero__content > p:not(.kicker){
+  color: rgba(255,255,255,.94);
+}
+
+@media (max-width: 860px){
+  body[data-project="eye-photography"] .eyeHero{
+    min-height: 100svh;
+    padding-top: calc(var(--nav-offset) + 1rem);
+  }
+
+  body[data-project="eye-photography"] .eyeHero__video{
+    transform: scale(1.08);
+  }
+}
+
+/* Home About + Highlights text size */
+.about__description,
+.about__text p,
+.about__text li,
+.bullets,
+.bullets li,
+.latest__descript,
+.latest__text p,
+.latest__text li {
+  font-size: clamp(12px, 1.35vw, 16px);
+  line-height: 1.6;
 }

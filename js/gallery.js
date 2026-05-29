@@ -30,6 +30,11 @@
   const store = window.BKVP_DATA;
   if (!store) return;
 
+  function getItemPosition(item){
+    if (!item || typeof item !== 'object') return '';
+    return item.position || item.objectPosition || item.thumbPosition || item.coverPosition || item.mediaPosition || item.dataPosition || item['data-position'] || '';
+  }
+
   // Resolve items
   let title = '';
   let desc = '';
@@ -73,7 +78,8 @@
           type: 'video',
           src,
           thumb: video.thumb || fallbackThumb,
-          alt: video.alt || title || 'Video'
+          alt: video.alt || title || 'Video',
+          position: getItemPosition(video)
         };
       };
 
@@ -94,7 +100,8 @@
         return {
           type: 'image',
           src,
-          alt: image.alt || title || 'Image'
+          alt: image.alt || title || 'Image',
+          position: getItemPosition(image)
         };
       };
 
@@ -209,8 +216,9 @@ function createThumb(item, idx) {
   }
 
   const media = btn.querySelector('img, video');
-  if (media && item.position) {
-    media.style.objectPosition = item.position;
+  const itemPosition = getItemPosition(item);
+  if (media && itemPosition) {
+    media.style.objectPosition = itemPosition;
   }
 
   return btn;
@@ -438,6 +446,8 @@ function render(){
         cover.className = 'lb-vimeo__cover';
         cover.src = item.thumb;
         cover.alt = item.alt || '';
+        const coverPosition = getItemPosition(item);
+        if (coverPosition) cover.style.objectPosition = coverPosition;
         wrap.appendChild(cover);
       }
 
@@ -467,6 +477,8 @@ function render(){
     const img = document.createElement('img');
     img.src = item.src;
     img.alt = item.alt || '';
+    const imagePosition = getItemPosition(item);
+    if (imagePosition) img.style.objectPosition = imagePosition;
     lbMedia.appendChild(img);
   }
 

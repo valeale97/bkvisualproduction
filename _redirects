@@ -1,0 +1,7 @@
+# Optional cleanup redirects for old duplicate highlight URLs inside /projects and /projekti
+/en/projects/longines/ /en/highlights/longines/ 301
+/en/projects/100-km-of-zadar/ /en/highlights/100-km-of-zadar/ 301
+/en/projects/toto-travel/ /en/highlights/toto-travel/ 301
+/hr/projekti/longines/ /hr/istaknuto/longines/ 301
+/hr/projekti/100-km-zadra/ /hr/istaknuto/100-km-zadra/ 301
+/hr/projekti/toto-travel/ /hr/istaknuto/toto-travel/ 301

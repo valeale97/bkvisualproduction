@@ -12,6 +12,7 @@
   }
   document.addEventListener('DOMContentLoaded', async ()=>{
     await inject('[data-include="contact"]', `/partials/contact.${lang}.html`);
+    await inject('[data-include="contact-eye"]', `/partials/contact-eye.${lang}.html`);
     await inject('[data-include="footer"]', `/partials/footer.${lang}.html`);
     // Set copyright year
     document.querySelectorAll('#js-year').forEach(el=> {el.textContent =new Date().getFullYear();})
