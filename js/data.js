@@ -521,10 +521,11 @@ window.BKVP_DATA = {
           hr: { book: 'Rezerviraj termin', proceed: 'Nastavi' }
         }
       },
+      // YYYY-MM-DD FORMAT
       bookingAvailability: {
         closedRange: {
           start: '2026-05-01',
-          end: '2026-05-05'
+          end: '2026-07-05'
         },
         statusMessage: {
           open: {
