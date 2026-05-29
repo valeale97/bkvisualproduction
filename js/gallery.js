@@ -371,17 +371,16 @@ renderNextBatch();
     lb.setAttribute('aria-hidden','true');
     lb.innerHTML = `
       <div class="lightbox__inner" role="dialog" aria-modal="true" aria-label="Media viewer">
+        <div class="lightbox__top">
+          <button class="lbBtn" type="button" id="lb-close" aria-label="Close">×</button>
+          <div style="display:flex;gap:.5rem">
+            <button class="lbBtn" type="button" id="lb-prev" aria-label="Previous">‹</button>
+            <button class="lbBtn" type="button" id="lb-next" aria-label="Next">›</button>
+          </div>
+        </div>
         <div class="lightbox__stage">
           <div class="lightbox__media" id="lightbox-media"></div>
         </div>
-
-        <div class="lightbox__top" aria-label="Media controls">
-          <button class="lbBtn lbBtn--close" type="button" id="lb-close" aria-label="Close">×</button>
-          <button class="lbBtn lbBtn--prev" type="button" id="lb-prev" aria-label="Previous">‹</button>
-          <button class="lbBtn lbBtn--next" type="button" id="lb-next" aria-label="Next">›</button>
-          <button class="lbBtn lbBtn--fullscreen" type="button" id="lb-fullscreen" aria-label="Fullscreen">⛶</button>
-        </div>
-
         <div class="lightbox__bottom">
           <p class="muted" id="lb-caption" style="margin:0"></p>
           <p class="counter muted" id="lb-counter" style="margin:0"></p>
@@ -397,74 +396,10 @@ renderNextBatch();
   const lbNext = $('#lb-next', lb);
   const lbCaption = $('#lb-caption', lb);
   const lbCounter = $('#lb-counter', lb);
-  const lbFullscreen = $('#lb-fullscreen', lb);
   if (!lbMedia || !lbClose || !lbPrev || !lbNext) return;
 
   let current = 0;
   let lastFocused = null;
-
-  function isOpen(){
-    return lb.getAttribute('aria-hidden') === 'false';
-  }
-
-  function isLandscape(){
-    return window.matchMedia('(orientation: landscape)').matches || window.innerWidth > window.innerHeight;
-  }
-
-  function updateViewportClass(){
-    lb.classList.toggle('is-landscape', isLandscape());
-  }
-
-  async function requestLightboxFullscreen(){
-    updateViewportClass();
-
-    // Request fullscreen on the whole lightbox, not on the Vimeo iframe.
-    // This keeps your custom X and arrow buttons visible.
-    const target = lb;
-
-    try {
-      if (!document.fullscreenElement && target.requestFullscreen) {
-        await target.requestFullscreen({ navigationUI: 'hide' });
-      } else if (!document.webkitFullscreenElement && target.webkitRequestFullscreen) {
-        target.webkitRequestFullscreen();
-      }
-    } catch (err) {
-      // Some mobile browsers block automatic fullscreen after rotation.
-      // CSS still expands the viewer to the full visible viewport.
-    }
-
-    lb.classList.add('is-fullscreen');
-  }
-
-  async function exitLightboxFullscreen(){
-    try {
-      if (document.fullscreenElement && document.exitFullscreen) {
-        await document.exitFullscreen();
-      } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      }
-    } catch (err) {}
-
-    lb.classList.remove('is-fullscreen');
-  }
-
-  function syncFullscreenClass(){
-    const active = document.fullscreenElement === lb || document.webkitFullscreenElement === lb;
-    lb.classList.toggle('is-fullscreen', active || isLandscape());
-  }
-
-  function handleViewportChange(){
-    if (!isOpen()) return;
-    updateViewportClass();
-
-    if (isLandscape()) {
-      // Try to enter true browser fullscreen after rotation.
-      // If the browser blocks it, CSS still gives a full visible lightbox.
-      requestLightboxFullscreen();
-    } else if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-      lb.classList.remove('is-fullscreen');
-    }
-  }
 
  function openAt(i){
   current = clamp(i, 0, items.length - 1);
@@ -477,13 +412,6 @@ renderNextBatch();
 
   lb.setAttribute('aria-hidden', 'false');
   document.documentElement.classList.add('no-scroll');
-  updateViewportClass();
-
-  // If the visitor opens a video while the phone is already horizontal,
-  // enter fullscreen immediately from the thumbnail tap gesture.
-  if (isLandscape()) {
-    requestLightboxFullscreen();
-  }
 }
 
 function close(){
@@ -497,8 +425,6 @@ function close(){
   if (vimeoIframe && vimeoIframe.contentWindow) {
     vimeoIframe.contentWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
   }
-
-  exitLightboxFullscreen();
 
   if (lastFocused && lastFocused.focus) lastFocused.focus();
 }
@@ -580,18 +506,6 @@ function render(){
   lbClose.addEventListener('click', close);
   lbPrev.addEventListener('click', prev);
   lbNext.addEventListener('click', next);
-
-  if (lbFullscreen) {
-    lbFullscreen.addEventListener('click', () => {
-      const active = document.fullscreenElement === lb || document.webkitFullscreenElement === lb;
-      active ? exitLightboxFullscreen() : requestLightboxFullscreen();
-    });
-  }
-
-  document.addEventListener('fullscreenchange', syncFullscreenClass);
-  document.addEventListener('webkitfullscreenchange', syncFullscreenClass);
-  window.addEventListener('orientationchange', () => setTimeout(handleViewportChange, 350));
-  window.addEventListener('resize', () => setTimeout(handleViewportChange, 120));
 
   // Click backdrop closes
   lb.addEventListener('click', (e)=>{
