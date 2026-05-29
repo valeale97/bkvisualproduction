@@ -115,10 +115,10 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/wedding_9.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_12.jpg', alt: 'Wedding photo' },
         { type: 'image', src: '/assets/img/wedding_13.jpg', alt: 'Wedding photo' },
-        { type: 'image', src: '/assets/img/wed_new1.jpg', alt: 'Wedding photo' },
-        { type: 'image', src: '/assets/img/wed_new2.jpg', alt: 'Wedding photo',position: 'center 30%' },
-        { type: 'image', src: '/assets/img/wed_new3.jpg', alt: 'Wedding photo',position: 'center 40%' },
-        { type: 'image', src: '/assets/img/wed_new4.jpg', alt: 'Wedding photo',position: 'center 70%' },
+        { type: 'image', src: '/assets/img/wed_new1.JPG', alt: 'Wedding photo' },
+        { type: 'image', src: '/assets/img/wed_new2.JPG', alt: 'Wedding photo',position: 'center 30%' },
+        { type: 'image', src: '/assets/img/wed_new3.JPG', alt: 'Wedding photo',position: 'center 40%' },
+        { type: 'image', src: '/assets/img/wed_new4.JPG', alt: 'Wedding photo',position: 'center 70%' },
       ]
     },
     events: {
@@ -133,12 +133,12 @@ window.BKVP_DATA = {
         { type: 'video', src: 'vimeo:1168609381', thumb: '/assets/img/futsal.jpeg', alt: 'Event video' },
         { type: 'video', src: 'vimeo:1168609332', thumb: '/assets/img/moderna.jpg', alt: 'Event video' },
         { type: 'image', src: '/assets/img/podroom.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event1.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event2.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event3.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event4.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event5.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event6.jpg', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/event1.JPG', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/event2.JPG', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/event3.JPG', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/event4.JPG', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/event5.JPG', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/event6.JPG', alt: 'Event photo' },
         
       ]
     },
