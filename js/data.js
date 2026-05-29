@@ -532,8 +532,8 @@ window.BKVP_DATA = {
             hr: 'Studio je otvoren za rezervacije.'
           },
           closed: {
-            en: 'Studio is not working from {start} to {end}. Booking is temporarily disabled.',
-            hr: 'Studio ne radi od {start} do {end}. Rezervacije su privremeno onemogućene.'
+            en: 'Studio is not working from {start} to {end} Booking is temporarily disabled.',
+            hr: 'Studio ne radi od {start} do {end} Rezervacije su privremeno onemogućene.'
           }
         }
       },
