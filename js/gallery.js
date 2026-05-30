@@ -371,13 +371,9 @@ renderNextBatch();
     lb.setAttribute('aria-hidden','true');
     lb.innerHTML = `
       <div class="lightbox__inner" role="dialog" aria-modal="true" aria-label="Media viewer">
-        <div class="lightbox__top">
-          <button class="lbBtn" type="button" id="lb-close" aria-label="Close">×</button>
-          <div style="display:flex;gap:.5rem">
-            <button class="lbBtn" type="button" id="lb-prev" aria-label="Previous">‹</button>
-            <button class="lbBtn" type="button" id="lb-next" aria-label="Next">›</button>
-          </div>
-        </div>
+        <button class="lbBtn lbBtn--close" type="button" id="lb-close" aria-label="Close">×</button>
+        <button class="lbBtn lbBtn--prev" type="button" id="lb-prev" aria-label="Previous">‹</button>
+        <button class="lbBtn lbBtn--next" type="button" id="lb-next" aria-label="Next">›</button>
         <div class="lightbox__stage">
           <div class="lightbox__media" id="lightbox-media"></div>
         </div>
@@ -400,10 +396,52 @@ renderNextBatch();
 
   let current = 0;
   let lastFocused = null;
+  let savedScrollY = 0;
+  let viewportWatcherBound = false;
+
+  function setLightboxViewportHeight(){
+    const viewport = window.visualViewport;
+    const height = viewport && viewport.height ? viewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--bkvp-lightbox-height', `${Math.round(height)}px`);
+  }
+
+  function bindLightboxViewportWatchers(){
+    if (viewportWatcherBound) return;
+    viewportWatcherBound = true;
+
+    window.addEventListener('resize', setLightboxViewportHeight, { passive:true });
+    window.addEventListener('orientationchange', () => {
+      setLightboxViewportHeight();
+      window.setTimeout(setLightboxViewportHeight, 250);
+    }, { passive:true });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setLightboxViewportHeight, { passive:true });
+      window.visualViewport.addEventListener('scroll', setLightboxViewportHeight, { passive:true });
+    }
+  }
+
+  function lockPageScroll(){
+    setLightboxViewportHeight();
+    savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.documentElement.classList.add('no-scroll', 'lightbox-lock');
+    document.body.classList.add('no-scroll', 'lightbox-lock');
+    document.body.style.top = `-${savedScrollY}px`;
+  }
+
+  function unlockPageScroll(){
+    const y = savedScrollY;
+    document.documentElement.classList.remove('no-scroll', 'lightbox-lock');
+    document.body.classList.remove('no-scroll', 'lightbox-lock');
+    document.body.style.top = '';
+    window.scrollTo(0, y);
+  }
 
  function openAt(i){
   current = clamp(i, 0, items.length - 1);
   lastFocused = document.activeElement;
+  bindLightboxViewportWatchers();
+  setLightboxViewportHeight();
 
   const item = items[current];
   if (lbMedia.dataset.currentSrc !== item.src) {
@@ -411,12 +449,12 @@ renderNextBatch();
   }
 
   lb.setAttribute('aria-hidden', 'false');
-  document.documentElement.classList.add('no-scroll');
+  lockPageScroll();
 }
 
 function close(){
   lb.setAttribute('aria-hidden', 'true');
-  document.documentElement.classList.remove('no-scroll');
+  unlockPageScroll();
 
   const html5Video = lbMedia.querySelector('video');
   if (html5Video) html5Video.pause();
@@ -425,6 +463,9 @@ function close(){
   if (vimeoIframe && vimeoIframe.contentWindow) {
     vimeoIframe.contentWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
   }
+
+  lbMedia.innerHTML = '';
+  lbMedia.dataset.currentSrc = '';
 
   if (lastFocused && lastFocused.focus) lastFocused.focus();
 }
@@ -453,8 +494,10 @@ function render(){
 
       const iframe = document.createElement('iframe');
       iframe.src = buildVimeoEmbedUrl(vimeoId);
-      iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; encrypted-media');
+      iframe.setAttribute('allowfullscreen', 'allowfullscreen');
+      iframe.setAttribute('webkitallowfullscreen', '');
+      iframe.setAttribute('mozallowfullscreen', '');
       iframe.setAttribute('title', item.alt || 'Vimeo video');
       iframe.loading = 'eager';
 
@@ -468,6 +511,8 @@ function render(){
       const v = document.createElement('video');
       v.controls = true;
       v.playsInline = true;
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
       v.preload = 'metadata';
       v.src = item.src;
       if (item.thumb) v.poster = item.thumb;
@@ -559,7 +604,10 @@ function render(){
       title: '0',
       byline: '0',
       portrait: '0',
-      playsinline: '1'
+      controls: '1',
+      fullscreen: '1',
+      playsinline: '1',
+      dnt: '1'
     });
     return `https://player.vimeo.com/video/${encodeURIComponent(id)}?${params.toString()}`;
   }
