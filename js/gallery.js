@@ -472,11 +472,16 @@ function close(){
 
 function render(){
   const item = items[current];
+  const isVideo = item.type === 'video';
+  const vimeoId = isVideo ? getVimeoId(item.src) : '';
+
+  lb.classList.toggle('is-video', isVideo);
+  lb.classList.toggle('is-vimeo', !!vimeoId);
+
   lbMedia.dataset.currentSrc = item.src;
   lbMedia.innerHTML = '';
 
-  if (item.type === 'video'){
-    const vimeoId = getVimeoId(item.src);
+  if (isVideo){
 
     if (vimeoId){
       const wrap = document.createElement('div');
