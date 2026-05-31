@@ -1117,6 +1117,47 @@ body.lightbox-lock{
   }
 }
 
+@media (max-width: 760px) and (orientation: portrait){
+  .lightbox.is-vimeo{
+    overflow-y:auto;
+    touch-action:pan-y;
+  }
+
+  .lightbox.is-vimeo .lightbox__stage{
+    padding:
+      calc(env(safe-area-inset-top) + 64px)
+      0
+      calc(env(safe-area-inset-bottom) + 86px);
+  }
+
+  .lightbox.is-vimeo .lightbox__media{
+    width:100vw;
+    height:calc(var(--bkvp-lightbox-height, 100dvh) - 150px);
+    max-width:none;
+    max-height:none;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+  }
+
+  .lightbox.is-vimeo .lb-vimeo,
+  .lightbox.is-vimeo .lb-vimeo iframe{
+    width:100%;
+    height:100%;
+  }
+
+  .lightbox.is-vimeo .lightbox__bottom{
+    display:none;
+  }
+
+  .lightbox.is-vimeo .lbBtn--close{
+    top:calc(env(safe-area-inset-top) + 10px);
+    left:calc(env(safe-area-inset-left) + 10px);
+    right:auto;
+    z-index:6;
+  }
+}
+
 /* ---------- Project page ---------- */
 .projectHero{
   position:relative;
