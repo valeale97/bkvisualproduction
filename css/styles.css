@@ -1110,14 +1110,46 @@ body.lightbox-lock{
     height:44px;
     border-radius:13px;
   }
+
   .lbBtn--close{
     top:calc(env(safe-area-inset-top) + 8px);
     right:calc(env(safe-area-inset-right) + 8px);
   }
-  .lbBtn--prev{left:calc(env(safe-area-inset-left) + 8px)}
-  .lbBtn--next{right:calc(env(safe-area-inset-right) + 8px)}
+
+  .lbBtn--prev{
+    left:calc(env(safe-area-inset-left) + 8px);
+  }
+
+  .lbBtn--next{
+    right:calc(env(safe-area-inset-right) + 8px);
+  }
+
   .lightbox__bottom{
     bottom:calc(env(safe-area-inset-bottom) + 8px);
+  }
+
+  .lightbox.is-vimeo .lb-vimeoFull{
+    position:absolute;
+    top:calc(env(safe-area-inset-top) + 8px);
+    left:calc(env(safe-area-inset-left) + 8px);
+    right:auto;
+    z-index:5;
+    width:44px;
+    height:44px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.28);
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    font-size:1.45rem;
+    line-height:1;
+    cursor:pointer;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    -webkit-tap-highlight-color:transparent;
   }
 }
 
@@ -1159,29 +1191,6 @@ body.lightbox-lock{
     left:calc(env(safe-area-inset-left) + 10px);
     right:auto;
     z-index:6;
-  }
-
-  .lightbox.is-vimeo .lb-vimeoFull{
-    position:absolute;
-    top:10px;
-    right:10px;
-    z-index:5;
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,.28);
-    background:rgba(0,0,0,.55);
-    color:#fff;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:0;
-    font-size:1.45rem;
-    line-height:1;
-    cursor:pointer;
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    -webkit-tap-highlight-color:transparent;
   }
 }
 
