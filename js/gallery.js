@@ -510,7 +510,31 @@ function render(){
         wrap.classList.remove('is-loading');
       }, { once: true });
 
+      const fullscreenBtn = document.createElement('button');
+      fullscreenBtn.type = 'button';
+      fullscreenBtn.className = 'lb-vimeoFull';
+      fullscreenBtn.setAttribute('aria-label', 'Open fullscreen');
+      fullscreenBtn.innerHTML = '⛶';
+      
+      fullscreenBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      
+        const target = iframe;
+      
+        if (target.requestFullscreen) {
+          target.requestFullscreen().catch(() => {});
+        } else if (target.webkitRequestFullscreen) {
+          target.webkitRequestFullscreen();
+        } else if (wrap.requestFullscreen) {
+          wrap.requestFullscreen().catch(() => {});
+        } else if (wrap.webkitRequestFullscreen) {
+          wrap.webkitRequestFullscreen();
+        }
+      });
+      
       wrap.appendChild(iframe);
+      wrap.appendChild(fullscreenBtn);
       lbMedia.appendChild(wrap);
     } else {
       const v = document.createElement('video');
