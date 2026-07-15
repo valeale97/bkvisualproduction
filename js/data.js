@@ -525,7 +525,7 @@ window.BKVP_DATA = {
       bookingAvailability: {
         closedRange: {
           start: '2026-05-01',
-          end: '2026-07-15'
+          end: '2026-07-30'
         },
         statusMessage: {
           open: {
