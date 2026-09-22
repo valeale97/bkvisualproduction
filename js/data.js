@@ -460,7 +460,8 @@ window.BKVP_DATA = {
   if (projects['lioqa']) {
     projects['lioqa'].key = 'lioqa';
     projects['lioqa'].title = { en: 'LIOQA', hr: 'LIOQA' };
-    projects['lioqa'].cover = '/assets/img/LIOQA_002_cover.jpg';
+    projects['lioqa'].cover = '/assets/img/lioqa_pic_007.jpg';
+    projects['lioqa'].coverPosition = 'center 80%';
     projects['lioqa'].path = { en: '/en/highlights/lioqa/', hr: '/hr/istaknuto/lioqa/' };
     projects['lioqa'].location = { en: 'Ugljan, Zadar County, Croatia', hr: 'Ugljan, Zadarska županija, Hrvatska' };
     projects['lioqa'].homeDescription = {
