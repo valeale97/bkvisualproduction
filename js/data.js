@@ -819,7 +819,8 @@ window.BKVP_DATA = {
       const galleryItems = getGalleryItems(item);
       const galleryImages = galleryItems.map((entry) => entry.src);
       const img = item.cover || galleryImages[0] || item.heroPoster || '/assets/img/logo.jpg';
-      const imgPosition = getMediaPositionValue(item) || item.coverPosition || (galleryItems[0] && galleryItems[0].position) || '';
+      const coverUsesFirstGalleryImage = !item.cover || item.cover === galleryImages[0];
+      const imgPosition = getMediaPositionValue(item) || (coverUsesFirstGalleryImage && galleryItems[0] && galleryItems[0].position) || '';
       const imgPositionAttr = imgPosition ? ` style="object-position:${esc(imgPosition)}"` : '';
       const locationText = pickLocalized(item.location, lang);
       const description = pickLocalized(item.homeDescription || item.description, lang);

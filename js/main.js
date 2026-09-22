@@ -242,9 +242,26 @@
 
   function applyRotatingFrame(img, frame){
     if (!img || !frame || !frame.src) return;
-    img.src = frame.src;
-    if (frame.position) img.style.objectPosition = frame.position;
-    else img.style.removeProperty('object-position');
+
+    const requestId = String((Number(img.dataset.rotatorRequest) || 0) + 1);
+    const preload = new Image();
+    let applied = false;
+
+    img.dataset.rotatorRequest = requestId;
+
+    const applyLoadedFrame = () => {
+      if (applied || img.dataset.rotatorRequest !== requestId) return;
+      applied = true;
+
+      if (frame.position) img.style.objectPosition = frame.position;
+      else img.style.removeProperty('object-position');
+      img.src = frame.src;
+    };
+
+    preload.addEventListener('load', applyLoadedFrame, { once: true });
+    preload.src = frame.src;
+
+    if (preload.complete && preload.naturalWidth) applyLoadedFrame();
   }
 
   function initRotatingPreviews(){
@@ -257,13 +274,17 @@
       const frames = parseRotatingGallery(raw);
       if (!frames.length) return;
 
-      if (frames[0] && frames[0].position) {
-        img.style.objectPosition = frames[0].position;
-      }
-
       if (reduceMotion || frames.length < 2 || img.dataset.rotatorReady === '1') return;
       img.dataset.rotatorReady = '1';
-      let index = 0;
+      const currentSrc = new URL(img.getAttribute('src') || '', window.location.href).href;
+      const initialIndex = frames.findIndex((frame) => new URL(frame.src, window.location.href).href === currentSrc);
+      let index = initialIndex;
+
+      frames.forEach((frame) => {
+        const preload = new Image();
+        preload.src = frame.src;
+      });
+
       window.setInterval(() => {
         index = (index + 1) % frames.length;
         applyRotatingFrame(img, frames[index]);

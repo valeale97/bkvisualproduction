@@ -1676,16 +1676,16 @@ body[data-project="eye-photography"] .nav__links a{font-size:.92rem;padding:.5re
 /* A soft gold accent for homepage inquiries and Eye Photography bookings. */
 body.home a.btn[href="#contact"],
 body[data-project="eye-photography"] :is(.eyeHero__actions a[href="#book"], #js-project-booking-book){
-  background:linear-gradient(135deg, rgba(232,204,125,.24), rgba(202,170,94,.14));
-  border-color:rgba(232,204,125,.42);
-  color:#fff4d6;
+  background:linear-gradient(135deg, rgba(246,207,92,.36), rgba(218,164,45,.24));
+  border-color:rgba(246,207,92,.56);
+  color:#fff3bd;
   backdrop-filter:blur(10px);
 }
 body.home a.btn[href="#contact"]:hover:not(:disabled),
 body[data-project="eye-photography"] :is(.eyeHero__actions a[href="#book"], #js-project-booking-book):hover:not(:disabled){
-  background:linear-gradient(135deg, rgba(232,204,125,.32), rgba(202,170,94,.22));
-  border-color:rgba(232,204,125,.62);
-  box-shadow:0 0 0 1px rgba(232,204,125,.12), 0 12px 32px rgba(0,0,0,.28);
+  background:linear-gradient(135deg, rgba(246,207,92,.46), rgba(218,164,45,.34));
+  border-color:rgba(246,207,92,.74);
+  box-shadow:0 0 0 1px rgba(246,207,92,.16), 0 12px 32px rgba(0,0,0,.28);
 }
 body.home a.btn[href="#contact"]:focus-visible,
 body[data-project="eye-photography"] :is(.eyeHero__actions a[href="#book"], #js-project-booking-book):focus-visible{
