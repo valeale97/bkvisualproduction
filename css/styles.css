@@ -1673,6 +1673,21 @@ body[data-project="eye-photography"] .nav__links a{font-size:.92rem;padding:.5re
 .eyeHero__content h1{font-size:clamp(2.5rem,7vw,5.7rem);line-height:.96;margin:.2rem 0 .75rem}
 .eyeHero__content p{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.82);margin:0 auto 1.3rem;max-width:58ch}
 .eyeHero__actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+/* A soft gold accent for Eye Photography booking actions. */
+body[data-project="eye-photography"] :is(.eyeHero__actions a[href="#book"], #js-project-booking-book){
+  background:linear-gradient(135deg, rgba(232,204,125,.24), rgba(202,170,94,.14));
+  border-color:rgba(232,204,125,.42);
+  color:#fff4d6;
+  backdrop-filter:blur(10px);
+}
+body[data-project="eye-photography"] :is(.eyeHero__actions a[href="#book"], #js-project-booking-book):hover:not(:disabled){
+  background:linear-gradient(135deg, rgba(232,204,125,.32), rgba(202,170,94,.22));
+  border-color:rgba(232,204,125,.62);
+  box-shadow:0 0 0 1px rgba(232,204,125,.12), 0 12px 32px rgba(0,0,0,.28);
+}
+body[data-project="eye-photography"] :is(.eyeHero__actions a[href="#book"], #js-project-booking-book):focus-visible{
+  outline-color:rgba(245,220,156,.9);
+}
 .eyeLanding{display:grid;gap:1.2rem}
 .eyeRow{display:grid;gap:1.2rem;align-items:center}
 .eyeRow__media img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow)}
