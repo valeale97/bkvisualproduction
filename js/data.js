@@ -126,19 +126,25 @@ window.BKVP_DATA = {
       desc: { en: 'Dynamic audio coverage for sports, nightlife, and many other kinds of events, capturing every cheer, beat, and atmosphere with crystal-clear sound. From the intensity of the game to the pulse of the party, every moment is preserved with precision and clarity, making your event come alive for audiences everywhere.'
         , hr: 'Dinamično audio snimanje za sportske događaje, noćni život i razne druge vrste evenata, koje bilježi svaki navijački uzvik, ritam i atmosferu uz kristalno čist zvuk. Od napetosti igre do pulsa zabave, svaki je trenutak zabilježen s preciznošću i jasnoćom, čineći vaš događaj živim i doživljajnim za publiku gdje god se nalazila' },
       items: [
-        { type: 'video', src: 'vimeo:1168609849', thumb: '/assets/img/100km_od_zadra_3.jpg', alt: 'Event video' },
-        { type: 'video', src: 'vimeo:1168608886', thumb: '/assets/img/longines_pic.jpg', alt: 'Event video' },
-        { type: 'video', src: 'vimeo:1172315537', thumb: '/assets/img/bebek_event.jpeg', alt: 'Event video' },
+        { type: 'video', src: 'vimeo:1228865059', thumb: '/assets/img/central1.jpg', alt: 'Event video',position: 'center 90%' },
+        { type: 'video', src: 'vimeo:1228867215', thumb: '/assets/img/central2.jpg', alt: 'Event video' },
+        { type: 'video', src: 'vimeo:1229081244', thumb: '/assets/img/letwins.jpg', alt: 'Event video',position: 'center 70%' },
+        { type: 'video', src: 'vimeo:1229083074', thumb: '/assets/img/azace.jpg', alt: 'Event video',position: 'center 30%' },
         { type: 'video', src: 'vimeo:1168610073', thumb: '/assets/img/podroom.jpeg', alt: 'Event video' },
-        { type: 'video', src: 'vimeo:1168609381', thumb: '/assets/img/futsal.jpeg', alt: 'Event video' },
-        { type: 'video', src: 'vimeo:1168609332', thumb: '/assets/img/moderna.jpg', alt: 'Event video' },
-        { type: 'image', src: '/assets/img/podroom.jpg', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event1.JPG', alt: 'Event photo' },
-        { type: 'image', src: '/assets/img/event2.JPG', alt: 'Event photo' },
+        { type: 'video', src: 'vimeo:1172315537', thumb: '/assets/img/bebek_event.jpeg', alt: 'Event video' },
+        { type: 'video', src: 'vimeo:1228878777', thumb: '/assets/img/joksimovic.jpg', alt: 'Event video' },
+        { type: 'image', src: '/assets/img/central3.jpg', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/central4.jpg', alt: 'Event photo',position: 'center 40%' },
+        { type: 'image', src: '/assets/img/central5.jpg', alt: 'Event photo' },
+        { type: 'image', src: '/assets/img/central6.jpg', alt: 'Event photo',position: 'center 80%' },
+        { type: 'image', src: '/assets/img/central7.jpg', alt: 'Event photo' },
         { type: 'image', src: '/assets/img/event3.JPG', alt: 'Event photo' },
         { type: 'image', src: '/assets/img/event4.JPG', alt: 'Event photo' },
         { type: 'image', src: '/assets/img/event5.JPG', alt: 'Event photo' },
         { type: 'image', src: '/assets/img/event6.JPG', alt: 'Event photo' },
+        { type: 'video', src: 'vimeo:1168609849', thumb: '/assets/img/100km_od_zadra_3.jpg', alt: 'Event video' },
+        { type: 'video', src: 'vimeo:1168608886', thumb: '/assets/img/longines_pic.jpg', alt: 'Event video' },
+        { type: 'video', src: 'vimeo:1168609381', thumb: '/assets/img/futsal.jpeg', alt: 'Event video' },
         
       ]
     },
@@ -150,6 +156,7 @@ window.BKVP_DATA = {
         { type: 'video', src: 'vimeo:1168608497', thumb: '/assets/img/mont_trade.jpeg', alt: 'Company promo video' },
         { type: 'video', src: 'vimeo:1196658869', thumb: '/assets/img/transfer.jpg', alt: 'Company promo video' },
         { type: 'video', src: 'vimeo:1196658850', thumb: '/assets/img/karcher.jpg', alt: 'Company promo video' },
+        { src: 'vimeo:1228886838', thumb: '/assets/img/promovideo.jpg', alt: 'Company promo video',position: 'center 90%' },
         
       ]
     },
@@ -163,6 +170,10 @@ window.BKVP_DATA = {
         { type: 'video', src: 'vimeo:1168608338' , thumb: '/assets/img/han.jpeg', alt: 'Restaurant video' },
         { type: 'video', src: 'vimeo:1168609164' , thumb: '/assets/img/han_1.jpeg', alt: 'Restaurant video' },
         { type: 'video', src: 'vimeo:1168627826' , thumb: '/assets/img/sfinga.jpeg', alt: 'Restaurant video' },
+        { type: 'video', src: 'vimeo:1229077251' , thumb: '/assets/img/food_vid.jpg', alt: 'Restaurant video' },
+        { type: 'image', src: '/assets/img/lioqa_pic_007.jpg', alt: 'Restaurant photo',position: 'center 80%' },
+        { type: 'image', src: '/assets/img/lioqa_pic_015.jpg', alt: 'Restaurant photo',position: 'center 70%'},
+        { type: 'image', src: '/assets/img/lioqa_pic_016.jpg', alt: 'Restaurant photo',position: 'center 80%' },
         { type: 'image', src: '/assets/img/food_2.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_3.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_4.jpg', alt: 'Restaurant photo' },
@@ -174,8 +185,6 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/food_10.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_11.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_12.jpg', alt: 'Restaurant photo' },
-        { type: 'image', src: '/assets/img/food_13.jpg', alt: 'Restaurant photo' },
-        { type: 'image', src: '/assets/img/food_14.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_15.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_16.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_17.jpg', alt: 'Restaurant photo' },
@@ -188,7 +197,6 @@ window.BKVP_DATA = {
         { type: 'image', src: '/assets/img/food_24.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_25.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_26.jpg', alt: 'Restaurant photo' },
-        { type: 'image', src: '/assets/img/food_27.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_28.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_29.jpg', alt: 'Restaurant photo' },
         { type: 'image', src: '/assets/img/food_30.jpg', alt: 'Restaurant photo' },
@@ -222,6 +230,7 @@ window.BKVP_DATA = {
         { type: 'video', src: 'vimeo:1181708473', thumb: '/assets/img/villaz6.jpg', alt: 'Accommodation video' },
         { type: 'video', src: 'vimeo:1172317554', thumb: '/assets/img/han.jpg', alt: 'Accommodation video' },
         { type: 'video', src: 'vimeo:1181708497', thumb: '/assets/img/hanfpv.jpg', alt: 'Accommodation video' },
+        { type: 'image', src: '/assets/img/lioqa_pic_001.jpg', alt: 'Accommodation photo',position: 'center 30%' },
         { type: 'image', src: '/assets/img/villa_2.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_3.jpg', alt: 'Accommodation photo' },
         { type: 'image', src: '/assets/img/villa_4.jpg', alt: 'Accommodation photo' },
@@ -315,13 +324,28 @@ window.BKVP_DATA = {
       ]
     },
 
-    'toto-travel': {
-        title: { en: 'Toto Travel', hr: 'Toto Travel' },
-        heroVideo: 'vimeo:1168608584',
-        heroPoster: '/assets/img/toto.jpeg',
+    'lioqa': {
+        title: { en: 'LIOQA', hr: 'LIOQA' },
+        heroVideo: 'vimeo:1228886678',
+        heroPoster: '/assets/img/LIOQA_002_cover.jpg',
 
         videos: [
-          { src: 'vimeo:1168608584', thumb: '/assets/img/toto.jpeg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886587', thumb: '/assets/img/LIOQA_001_cover.jpg', alt: 'Highlight video',position: 'center 20%' },
+          { src: 'vimeo:1228886678', thumb: '/assets/img/LIOQA_002_cover.jpg', alt: 'Highlight video',position: 'center 80%' },
+          { src: 'vimeo:1228886734', thumb: '/assets/img/LIOQA_003_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886781', thumb: '/assets/img/LIOQA_004_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886811', thumb: '/assets/img/LIOQA_005_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886889', thumb: '/assets/img/LIOQA_006_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886891', thumb: '/assets/img/LIOQA_007_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886892', thumb: '/assets/img/LIOQA_008_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886894', thumb: '/assets/img/LIOQA_009_cover.jpg', alt: 'Highlight video',position: 'center 30%' },
+          { src: 'vimeo:1228886910', thumb: '/assets/img/LIOQA_010_cover.jpg', alt: 'Highlight video',position: 'center 40%'},
+          { src: 'vimeo:1228886917', thumb: '/assets/img/LIOQA_011_cover.jpg', alt: 'Highlight video'},
+          { src: 'vimeo:1228886922', thumb: '/assets/img/LIOQA_012_cover.jpg', alt: 'Highlight video',position: 'center 30%'},
+          { src: 'vimeo:1228886923', thumb: '/assets/img/LIOQA_013_cover.jpg', alt: 'Highlight video' },
+          { src: 'vimeo:1228886835', thumb: '/assets/img/LIOQA_014_cover.jpg', alt: 'Highlight video',position: 'center 75%' },
+          { src: 'vimeo:1228886837', thumb: '/assets/img/LIOQA_016_cover.jpg', alt: 'Highlight video',position: 'center 60%' },
+          { src: 'vimeo:1228886843', thumb: '/assets/img/LIOQA_017_cover.jpg', alt: 'Highlight video',position: 'center 70%' },
         ],
 
         price: '',
@@ -330,14 +354,35 @@ window.BKVP_DATA = {
           hr: ''
         },
         description: {
-          en: '',
-          hr: ''
+          en: 'A collection of professional reels and photographs created for the LIOQA marketing campaign, filmed and photographed on Ugljan in Zadar County, Croatia. Showcasing the accommodation, dining, thoughtful details, and atmosphere of the destination, the content brings the guest experience to life across social media, websites, and digital advertising.',
+          hr: 'Serija profesionalnih reels videa i fotografija kreirana za marketinšku kampanju LIOQA, snimljena na Ugljanu u Zadarskoj županiji, Hrvatska. Kroz prikaz smještaja, gastronomske ponude, pažljivo odabranih detalja i atmosfere destinacije, sadržaj dočarava iskustvo boravka za društvene mreže, web stranice i digitalno oglašavanje.'
         },
         gallery: [
-          { type: 'image', src: '/assets/img/travel_1.jpg', alt: 'Highlight photo' },
-          { type: 'image', src: '/assets/img/travel_2.jpg', alt: 'Highlight photo' },
-          { type: 'image', src: '/assets/img/travel_3.jpg', alt: 'Highlight photo' },
-          { type: 'image', src: '/assets/img/travel_4.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_001.jpg', alt: 'Highlight photo',position: 'center 30%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_002.jpg', alt: 'Highlight photo',position: 'center 45%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_007.jpg', alt: 'Highlight photo',position: 'center 80%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_009.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_010.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_015.jpg', alt: 'Highlight photo',position: 'center 70%'},
+          { type: 'image', src: '/assets/img/lioqa_pic_016.jpg', alt: 'Highlight photo',position: 'center 80%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_020.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_031.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_033.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_040.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_041.jpg', alt: 'Highlight photo',position: 'center 80%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_055.jpg', alt: 'Highlight photo',position: 'center 80%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_056.jpg', alt: 'Highlight photo',position: 'center 60%' },
+          { type: 'image', src: '/assets/img/lioqa_pic_077.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_084.jpg', alt: 'Highlight photo' ,position: 'center 20%'},
+          { type: 'image', src: '/assets/img/lioqa_pic_100.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_101.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_102.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_103.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_104.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_106.jpg', alt: 'Highlight photo' },
+          { type: 'image', src: '/assets/img/lioqa_pic_107.jpg', alt: 'Highlight photo' ,position: 'center 30%'},
+          
+          
         ]
           
       },
@@ -373,7 +418,8 @@ window.BKVP_DATA = {
   }
   if (portfolio.events) {
     portfolio.events.key = 'events';
-    portfolio.events.cover = '/assets/img/100km_od_zadra.jpg';
+    portfolio.events.cover = '/assets/img/central7.jpg';
+    portfolio.events.coverPosition = 'center 90%';
     portfolio.events.path = { en: '/en/portfolio/events/', hr: '/hr/galerija/dogadaji/' };
   }
   if (portfolio.weddings) {
@@ -411,15 +457,16 @@ window.BKVP_DATA = {
     };
   }
 
-  if (projects['toto-travel']) {
-    projects['toto-travel'].key = 'toto-travel';
-    projects['toto-travel'].title = { en: 'Toto Travel', hr: 'Toto Travel' };
-    projects['toto-travel'].cover = '/assets/img/toto.jpeg';
-    projects['toto-travel'].path = { en: '/en/highlights/toto-travel/', hr: '/hr/istaknuto/toto-travel/' };
-    projects['toto-travel'].location = { en: 'Split-Dalmatia County, Croatia', hr: 'Splitsko dalmatinska županija, Hrvatska' };
-    projects['toto-travel'].homeDescription = {
-      en: 'Photo and video coverage for Toto Travel, a touristic agency in Split-Dalmatia County, Croatia, specializing in Adriatic boat tours. The material presents guided visits to scenic islands, coastal towns, and natural attractions, capturing the beauty of the Dalmatian coast, guest experiences, and the relaxed atmosphere of exploring the region by sea. Suitable for tourism, media, and promotional use.',
-      hr: 'Foto i video pokrivanje za Toto Travel, turističku agenciju u Splitsko-dalmatinskoj županiji specijaliziranu za izlete brodom po Jadranu. Materijal prikazuje vođene posjete slikovitim otocima, obalnim gradovima i prirodnim atrakcijama, bilježeći ljepotu dalmatinske obale, iskustva gostiju i opuštenu atmosferu istraživanja regije morskim putem. Prikladno za turističku, medijsku i promotivnu upotrebu.'    };
+  if (projects['lioqa']) {
+    projects['lioqa'].key = 'lioqa';
+    projects['lioqa'].title = { en: 'LIOQA', hr: 'LIOQA' };
+    projects['lioqa'].cover = '/assets/img/LIOQA_002_cover.jpg';
+    projects['lioqa'].path = { en: '/en/highlights/lioqa/', hr: '/hr/istaknuto/lioqa/' };
+    projects['lioqa'].location = { en: 'Ugljan, Zadar County, Croatia', hr: 'Ugljan, Zadarska županija, Hrvatska' };
+    projects['lioqa'].homeDescription = {
+      en: 'A collection of professional reels and photographs created for the LIOQA marketing campaign, filmed and photographed on Ugljan in Zadar County, Croatia. Showcasing the accommodation, dining, thoughtful details, and atmosphere of the destination, the content brings the guest experience to life across social media, websites, and digital advertising.',
+      hr: 'Serija profesionalnih reels videa i fotografija kreirana za marketinšku kampanju LIOQA, snimljena na Ugljanu u Zadarskoj županiji, Hrvatska. Kroz prikaz smještaja, gastronomske ponude, pažljivo odabranih detalja i atmosfere destinacije, sadržaj dočarava iskustvo boravka za društvene mreže, web stranice i digitalno oglašavanje.'
+    };
   }
 
 
@@ -604,6 +651,11 @@ window.BKVP_DATA = {
         }
       ],
       gallery: [
+        { type: 'image', src: '/assets/img/iris1.jpg', alt: 'Eye Photography' },
+        { type: 'image', src: '/assets/img/iris2.jpg', alt: 'Eye Photography' },
+        { type: 'image', src: '/assets/img/iris3.jpg', alt: 'Eye Photography' },
+        { type: 'image', src: '/assets/img/iris4.jpg', alt: 'Eye Photography' },
+        { type: 'image', src: '/assets/img/iris5.jpg', alt: 'Eye Photography' },
         { type: 'image', src: '/assets/img/eye1.jpeg', alt: 'Eye Photography' },
         { type: 'image', src: '/assets/img/eye2.jpeg', alt: 'Eye Photography' },
         { type: 'image', src: '/assets/img/eye3.jpeg', alt: 'Eye Photography' },
@@ -634,7 +686,7 @@ window.BKVP_DATA = {
   site.home = {
     portfolioOrder: ['accommodation', 'restaurants', 'travel', 'events', 'weddings', 'company'],
     serviceProjectOrder: ['eye-photography'],
-    projectOrder: ['longines', 'car-event', 'toto-travel'],
+    projectOrder: ['longines', 'car-event', 'lioqa'],
     ui: {
       en: {
         portfolioAria: 'Open',
@@ -1148,7 +1200,7 @@ window.BKVP_DATA = {
         item.cover ||
         (firstMedia && (firstMedia.thumb || firstMedia.src)) ||
         '/assets/img/logo.jpg';
-      const firstMediaPosition = getMediaPositionValue(firstMedia) || item.coverPosition || getMediaPositionValue(item);
+      const firstMediaPosition = item.coverPosition || getMediaPositionValue(firstMedia) || getMediaPositionValue(item);
       const imgPosition = firstMediaPosition ? ` style="object-position:${esc(firstMediaPosition)}"` : '';
 
       return `

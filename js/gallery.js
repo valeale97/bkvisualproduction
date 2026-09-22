@@ -35,6 +35,12 @@
     return item.position || item.objectPosition || item.thumbPosition || item.coverPosition || item.mediaPosition || item.dataPosition || item['data-position'] || '';
   }
 
+  function getLightboxImagePosition(item){
+    if (!item || typeof item !== 'object') return 'center center';
+    // Thumbnail crop positioning stays independent from the full-size viewer.
+    return item.lightboxPosition || item.fullImagePosition || 'center center';
+  }
+
   // Resolve items
   let title = '';
   let desc = '';
@@ -101,7 +107,8 @@
           type: 'image',
           src,
           alt: image.alt || title || 'Image',
-          position: getItemPosition(image)
+          position: getItemPosition(image),
+          lightboxPosition: getLightboxImagePosition(image)
         };
       };
 
@@ -549,10 +556,10 @@ function render(){
     }
   } else {
     const img = document.createElement('img');
+    img.className = 'lightbox__image';
     img.src = item.src;
     img.alt = item.alt || '';
-    const imagePosition = getItemPosition(item);
-    if (imagePosition) img.style.objectPosition = imagePosition;
+    img.style.objectPosition = getLightboxImagePosition(item);
     lbMedia.appendChild(img);
   }
 

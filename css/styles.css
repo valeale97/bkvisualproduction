@@ -964,6 +964,21 @@ body.lightbox-lock{
   background:#000;
 }
 
+/* Keep portrait photos from expanding the lightbox grid track. */
+.lightbox:not(.is-video) .lightbox__media{
+  position:relative;
+}
+.lightbox:not(.is-video) .lightbox__media .lightbox__image{
+  position:absolute;
+  inset:0;
+  display:block;
+  min-width:0;
+  min-height:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
 /* Vimeo inside lightbox with thumb cover */
 .lb-vimeo{
   position: relative;
@@ -1072,13 +1087,32 @@ body.lightbox-lock{
     border-radius:0;
     box-shadow:none;
   }
-  .lightbox__media img,
-  .lightbox__media video,
-  .lb-vimeo{
+  .lightbox.is-video .lightbox__media video,
+  .lightbox.is-video .lb-vimeo{
     width:100%;
     height:100%;
     max-height:none;
     object-fit:contain;
+  }
+  .lightbox:not(.is-video){
+    height:100vh;
+    height:100dvh;
+  }
+  .lightbox:not(.is-video) .lightbox__stage{
+    display:grid;
+    place-items:center;
+  }
+  .lightbox:not(.is-video) .lightbox__media{
+    height:100%;
+    display:grid;
+    place-items:center;
+  }
+  .lightbox:not(.is-video) .lightbox__media .lightbox__image{
+    width:100%;
+    height:100%;
+    max-height:none;
+    object-fit:contain;
+    object-position:center center;
   }
   .lbBtn{
     width:48px;
